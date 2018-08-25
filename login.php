@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script src="js/mootools.js"></script>
+        <title>Autenticazione</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <script src="js/mootools.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/login.css"/>
 	<link rel="stylesheet" type="text/css" href="dhtmlx/codebase/fonts/font_roboto/roboto.css"/>
 	<link rel="stylesheet" type="text/css" href="dhtmlx/codebase/dhtmlx.css"/>
@@ -17,7 +18,7 @@
                     {type: "settings", position: "label-left", labelWidth: 130, inputWidth: 120},
                     {type: "fieldset", label: "Autenticazione", inputWidth: 340, list:[
                         {type: "input", name: "user", label: "Username", value: "root"},
-                        {type: "password", name: "passwd", label: "Password", value: "pass"},
+                        {type: "password", name: "passwd", label: "Password", value: "root123"},
                         {type: "button", value: "ACCEDI"}
                     ]}
                 ];
@@ -40,8 +41,8 @@
     </head>
     <body onload="doOnLoad();">
         <div class="main_login">
-            <div id="loginForm" style="height:550px;"></div>
+            <div id="loginForm"></div>
+            <div id="auth_failed"></div>
         </div>
-	<div id="test">11111</div>
 </body>
 </html>

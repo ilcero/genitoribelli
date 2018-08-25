@@ -9,3 +9,10 @@
 
     margin: auto;
 }
+.auth_failed{
+    color: red;
+    /*border: 1px solid red;*/
+    font-weight: bold;
+    font-family: arial;
+    text-align: center;
+}
