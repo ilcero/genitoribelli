@@ -1,15 +1,8 @@
 [
-	{id:"file", text:"File", items:[
-		{id: "new", text: "New", img: "new.gif", imgdis: "new_dis.gif"},
+	{id:"soci", text:"Soci", items:[
+		{id: "nuovo", text: "Nuovo socio", img: "new.gif", imgdis: "new_dis.gif"},
 		{id: "file_sep_1", type: "separator"},
-		{id: "open", text: "Open", img: "open.gif", imgdis: "open_dis.gif"},
-		{id: "save", text: "Save", img: "save.gif", imgdis: "save_dis.gif"},
-		{id: "saveAs", text: "Save As...", img: "save_as.gif", imgdis: "save_as_dis.gif", enabled: false},
-		{id: "file_sep_2", type: "separator"},
-		{id: "print", text: "Print", img: "print.gif", imgdis: "print_dis.gif"},
-		{id: "pageSetup", text: "Page Setup", img: "page_setup.gif", imgdis: "page_setup_dis.gif", enabled: "false"},
-		{id: "file_sep_3", type: "separator"},
-		{id: "close", text: "Close", img: "close.gif", imgdis: "close_dis.gif"}
+		{id: "elenco", text: "Elenco", img: "open.gif", imgdis: "open_dis.gif"}
 	]},
 	{id: "sep_top_1", type: "separator"},
 	{id: "edit", text: "Edit", items:[

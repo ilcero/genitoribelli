@@ -1,0 +1,11 @@
+
+html{
+    font-family: Arial;
+}
+.logged_user{
+    float: right;
+}
+#socigridbox{
+    wifth: 100%;
+    height: 600px;
+}
