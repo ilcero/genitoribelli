@@ -9,6 +9,7 @@ include 'inc/header.php';
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <script src="js/mootools.js"></script>
+        <script src="js/main.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/main.css"/>
 	<link rel="stylesheet" type="text/css" href="dhtmlx/codebase/fonts/font_roboto/roboto.css"/>
 	<!--<link rel="stylesheet" type="text/css" href="dhtmlx/codebase/dhtmlx.css"/>-->
@@ -25,6 +26,14 @@ include 'inc/header.php';
                             // callback
                     }
                 });
+                
+                gbMenu.attachEvent("onClick", function(id, zoneId, cas){
+                    if(id == "elenco")
+                    {
+                        window.location.href = "index.php";
+                    }
+                });
+                
                 sociGrid = new dhtmlXGridObject('socigridbox');
                 sociGrid.setImagePath("dhtmlx/skins/web/imgs/");
                 sociGrid.setHeader("Tessera, Nome, Cognome, Codice Fiscale, email, tel, Data nascita");
@@ -33,12 +42,9 @@ include 'inc/header.php';
                 sociGrid.setColAlign("center,left,left,left,left,left,left");
                 sociGrid.setColTypes("ro,ro,ro,ro,ro,ro,ro");
                 sociGrid.setColSorting("int,str,str,str,str,str,str");
-                sociGrid.attachEvent("onRowSelect",doOnRowSelect);
+                sociGrid.attachEvent("onRowSelect",open_socio_details);
                 sociGrid.init();
                 sociGrid.load("json_data/soci_all.php","json");
-            }
-            function doOnRowSelect(id){
-//                alert(id);
             }
     </script>
 </head>
@@ -46,8 +52,13 @@ include 'inc/header.php';
 	<div>
             <div class="logged_user"><?php echo ' '.$_SESSION["nome"]." ".$_SESSION["cognome"]?> | <a href="logout.php">esci</a></div>
             <br/>
-            <div id="gbMenu"></div><br/>
-            <div id="socigridbox"></div>
+                <div id="gbMenu"></div><br/>
+                <table id="container" style="width: 100%">
+                    <tr>
+                        <td style="width:60%"><div id="socigridbox"></div></td>
+                        <td style="vertical-align:top"><div id="socigriddetails">wwww</div></td>
+                    </tr>
+                </table>
 	</div>
 </body>
 </html>
