@@ -28,10 +28,7 @@ include 'inc/header.php';
                 });
                 
                 gbMenu.attachEvent("onClick", function(id, zoneId, cas){
-                    if(id == "elenco")
-                    {
-                        window.location.href = "index.php";
-                    }
+                    menu_go_to(id);
                 });
                 
                 sociGrid = new dhtmlXGridObject('socigridbox');
@@ -50,13 +47,13 @@ include 'inc/header.php';
 </head>
 <body onload="doOnLoad();">
 	<div>
-            <div class="logged_user"><?php echo ' '.$_SESSION["nome"]." ".$_SESSION["cognome"]?> | <a href="logout.php">esci</a></div>
+            <?php include 'inc/loggeduser.php';?>
             <br/>
                 <div id="gbMenu"></div><br/>
                 <table id="container" style="width: 100%">
                     <tr>
                         <td style="width:60%"><div id="socigridbox"></div></td>
-                        <td style="vertical-align:top"><div id="socigriddetails">wwww</div></td>
+                        <td style="vertical-align:top"><div id="socigriddetails"></div></td>
                     </tr>
                 </table>
 	</div>

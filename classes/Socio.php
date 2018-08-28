@@ -1,6 +1,7 @@
 <?php
 
 include 'db.php';
+include 'Utils.php';
 
 /**
  * Description of Socio
@@ -81,7 +82,55 @@ class Socio {
     function setData_nascita($data_nascita) {
         $this->data_nascita = $data_nascita;
     }
-
+    
+    function getData_nascita_ita()
+    {
+        return Utils::reverse_date($this->data_nascita);
+    }
+    
+    public function insert()
+    {
+        $db = new Db();
+        $conn = $db->connect();
+        $res = $conn->query("INSERT INTO socio (numero_tessera, nome, cognome, codice_fiscale, email, tel, data_nascita) "
+                . " VALUES "
+                . "("
+                    . "getNuovoNumeroTessera(), "
+                    . "'".$this->getNome()."', "
+                    . "'".$this->getCognome()."', "
+                    . "'".$this->getCodice_fiscale()."', "
+                    . "'".$this->getEmail()."', "
+                    . "'".$this->getTel()."', "
+                    . "'".$this->getData_nascita()."'"
+                . ")");
+//                . " nome = '".$this->getNome()."', "
+//                . " cognome = '".$this->getCognome()."', "
+//                . " codice_fiscale = '".$this->getCodice_fiscale()."', "
+//                . " email = '".$this->getEmail()."', "
+//                . " tel = '".$this->getTel()."', ";
+//                . " data_nascita = '".$this->getData_nascita();
+                
+        $conn->close();
+        return $res;
+    }
+    
+    public function update()
+    {
+        $db = new Db();
+        $conn = $db->connect();
+        $res = $conn->query("UPDATE socio SET "
+                . " nome = '".$this->getNome()."', "
+                . " cognome = '".$this->getCognome()."', "
+                . " codice_fiscale = '".$this->getCodice_fiscale()."', "
+                . " email = '".$this->getEmail()."', "
+                . " tel = '".$this->getTel()."', "
+                . " data_nascita = '".$this->getData_nascita()."' "
+                . " WHERE "
+                . " id = ".$this->getId());
+        $conn->close();
+        return $res;
+    }
+    
     static function get_object_from_db($row)
     {
         $socio = new Socio();
@@ -110,6 +159,24 @@ class Socio {
             // output data of each row
             while($row = $result->fetch_assoc()) {
                 $socio[$row["id"]] = Socio::get_object_from_db($row);
+            }
+        } 
+        $conn->close();
+        return $socio;
+    }
+    static function get_by_id($id)
+    {
+        $socio = null;
+        $db = new Db();
+        $conn = $db->connect();
+        
+        $sql = "SELECT * FROM socio WHERE id =".$id;
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                $socio = Socio::get_object_from_db($row);
             }
         } 
         $conn->close();
