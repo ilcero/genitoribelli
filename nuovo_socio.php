@@ -13,7 +13,7 @@ include 'inc/header.php';
 	<link rel="stylesheet" type="text/css" href="css/main.css"/>
 	<link rel="stylesheet" type="text/css" href="dhtmlx/codebase/fonts/font_roboto/roboto.css"/>
 	<!--<link rel="stylesheet" type="text/css" href="dhtmlx/codebase/dhtmlx.css"/>-->
-	<link rel="stylesheet" type="text/css" href="dhtmlx/skins/web/dhtmlx.css"/>
+	<link rel="stylesheet" type="text/css" href="dhtmlx/skins/skyblue/dhtmlx.css"/>
 	<script src="dhtmlx/codebase/dhtmlx.js"></script>
         <script>
             var gbMenu, nuovoSocioForm;
@@ -41,6 +41,7 @@ include 'inc/header.php';
                     var email = nuovoSocioForm.getItemValue("email");
                     var tel = nuovoSocioForm.getItemValue("tel");
                     var data_nascita = nuovoSocioForm.getItemValue("data_nascita", true);
+                    var note = nuovoSocioForm.getItemValue("note");
 
                     if(nome == "" || nome == "undefined")
                     {
@@ -71,7 +72,8 @@ include 'inc/header.php';
                             'codice_fiscale': codice_fiscale,
                             'email': email,
                             'tel': tel,
-                            'data_nascita': data_nascita
+                            'data_nascita': data_nascita,
+                            'note': note
 
                         });
                     }

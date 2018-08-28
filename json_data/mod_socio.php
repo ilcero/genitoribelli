@@ -55,9 +55,29 @@ $list[5]["label"] = "Data di nascita";
 $list[5]["value"] = Utils::reverse_date($socio->getData_nascita());
 $list[5]["required"] = true;
 
-$list[6]["type"] = "button";
-$list[6]["label"] = "salva";
-$list[6]["value"] = "salva";
+$list[6]["type"] = "editor";
+$list[6]["name"] = "note";
+$list[6]["label"] = "Note";
+$list[6]["inputWidth"] = "300";
+$list[6]["inputHeight"] = "250";
+$list[6]["value"] = $socio->getNote();
+
+$list[7]["type"] = "block";
+$list[7]["blockOffset"] = 0;
+
+$listbtn[0]["type"] = "button";
+$listbtn[0]["label"] = "salva";
+$listbtn[0]["value"] = "salva";
+$listbtn[0]["name"] = "salva";
+
+$listbtn[1]["type"] = "newcolumn";
+
+$listbtn[2]["type"] = "button";
+$listbtn[2]["label"] = "elimina";
+$listbtn[2]["value"] = "elimina";
+$listbtn[2]["name"] = "elimina";
+
+$list[6]["list"] = $listbtn;
 
 $formData[1]["list"] = $list;
 

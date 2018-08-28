@@ -18,6 +18,7 @@ class Socio {
     var $email;
     var $tel;
     var $data_nascita;
+    var $note;
     
     function getId() {
         return $this->id;
@@ -83,6 +84,14 @@ class Socio {
         $this->data_nascita = $data_nascita;
     }
     
+    function getNote() {
+        return $this->note;
+    }
+
+    function setNote($note) {
+        $this->note = $note;
+    }
+
     function getData_nascita_ita()
     {
         return Utils::reverse_date($this->data_nascita);
@@ -92,7 +101,7 @@ class Socio {
     {
         $db = new Db();
         $conn = $db->connect();
-        $res = $conn->query("INSERT INTO socio (numero_tessera, nome, cognome, codice_fiscale, email, tel, data_nascita) "
+        $res = $conn->query("INSERT INTO socio (numero_tessera, nome, cognome, codice_fiscale, email, tel, data_nascita, note) "
                 . " VALUES "
                 . "("
                     . "getNuovoNumeroTessera(), "
@@ -101,7 +110,8 @@ class Socio {
                     . "'".$this->getCodice_fiscale()."', "
                     . "'".$this->getEmail()."', "
                     . "'".$this->getTel()."', "
-                    . "'".$this->getData_nascita()."'"
+                    . "'".$this->getData_nascita()."', "
+                    . "'".$this->getNote()."'"
                 . ")");
 //                . " nome = '".$this->getNome()."', "
 //                . " cognome = '".$this->getCognome()."', "
@@ -124,9 +134,20 @@ class Socio {
                 . " codice_fiscale = '".$this->getCodice_fiscale()."', "
                 . " email = '".$this->getEmail()."', "
                 . " tel = '".$this->getTel()."', "
-                . " data_nascita = '".$this->getData_nascita()."' "
+                . " data_nascita = '".$this->getData_nascita()."', "
+                . " note = '".$this->getNote()."' "
                 . " WHERE "
                 . " id = ".$this->getId());
+        $conn->close();
+        return $res;
+    }
+    
+    public function delete()
+    {
+        $db = new Db();
+        $conn = $db->connect();
+        $res = $conn->query("DELETE FROM socio WHERE id = ".$this->getId());
+               
         $conn->close();
         return $res;
     }
@@ -142,6 +163,7 @@ class Socio {
         $socio->setEmail($row["email"]);
         $socio->setTel($row["tel"]);
         $socio->setData_nascita($row["data_nascita"]);
+        $socio->setNote($row["note"]);
         
         return $socio;
     }

@@ -13,7 +13,7 @@ include 'inc/header.php';
 	<link rel="stylesheet" type="text/css" href="css/main.css"/>
 	<link rel="stylesheet" type="text/css" href="dhtmlx/codebase/fonts/font_roboto/roboto.css"/>
 	<!--<link rel="stylesheet" type="text/css" href="dhtmlx/codebase/dhtmlx.css"/>-->
-	<link rel="stylesheet" type="text/css" href="dhtmlx/skins/web/dhtmlx.css"/>
+	<link rel="stylesheet" type="text/css" href="dhtmlx/skins/skyblue/dhtmlx.css"/>
 	<script src="dhtmlx/codebase/dhtmlx.js"></script>
         <script>
             var gbMenu, sociGrid;
@@ -32,7 +32,7 @@ include 'inc/header.php';
                 });
                 
                 sociGrid = new dhtmlXGridObject('socigridbox');
-                sociGrid.setImagePath("dhtmlx/skins/web/imgs/");
+                sociGrid.setImagePath("dhtmlx/skins/skyblue/imgs/");
                 sociGrid.setHeader("Tessera, Nome, Cognome, Codice Fiscale, email, tel, Data nascita");
                 sociGrid.attachHeader("&nbsp;,#text_filter,#text_filter,&nbsp;,&nbsp;,&nbsp;,&nbsp;");
                 sociGrid.setInitWidths("70,*,*,*,*,*,*");
@@ -50,12 +50,17 @@ include 'inc/header.php';
             <?php include 'inc/loggeduser.php';?>
             <br/>
                 <div id="gbMenu"></div><br/>
-                <table id="container" style="width: 100%">
+                <div id="container">
+                    <div id="socigridbox"></div>
+                    <div id="socigriddetails"></div>
+                    <div style="clear:both;"></div>
+                </div>
+<!--                <table id="container" style="width: 100%">
                     <tr>
                         <td style="width:60%"><div id="socigridbox"></div></td>
                         <td style="vertical-align:top"><div id="socigriddetails"></div></td>
                     </tr>
-                </table>
+                </table>-->
 	</div>
 </body>
 </html>

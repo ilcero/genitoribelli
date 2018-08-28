@@ -51,9 +51,16 @@ $list[5]["label"] = "Data di nascita";
 $list[5]["value"] = "";
 $list[5]["required"] = true;
 
-$list[6]["type"] = "button";
-$list[6]["label"] = "salva";
-$list[6]["value"] = "salva";
+$list[6]["type"] = "editor";
+$list[6]["name"] = "note";
+$list[6]["label"] = "Note";
+$list[6]["inputWidth"] = "300";
+$list[6]["inputHeight"] = "250";
+$list[6]["value"] = "";
+
+$list[7]["type"] = "button";
+$list[7]["label"] = "salva";
+$list[7]["value"] = "salva";
 
 $formData[1]["list"] = $list;
 
