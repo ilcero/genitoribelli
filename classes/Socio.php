@@ -1,7 +1,7 @@
 <?php
 
-include 'db.php';
-include 'Utils.php';
+require_once 'db.php';
+require_once 'Utils.php';
 
 /**
  * Description of Socio
@@ -97,6 +97,11 @@ class Socio {
         return Utils::reverse_date($this->data_nascita);
     }
     
+    function getCognomeNome()
+    {
+        return $this->cognome." ".$this->nome;
+    }
+    
     public function insert()
     {
         $db = new Db();
@@ -186,6 +191,7 @@ class Socio {
         $conn->close();
         return $socio;
     }
+    
     static function get_by_id($id)
     {
         $socio = null;

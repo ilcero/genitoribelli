@@ -12,7 +12,7 @@ $formData[0]["labelWidth"] = "130";
 $formData[0]["inputWidth"] = "250";
 
 $formData[1]["type"] = "fieldset";
-$formData[1]["label"] = "Modifica socio";
+$formData[1]["label"] = "Dati";
 $formData[1]["inputWidth"] = "500";
 
 

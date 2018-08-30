@@ -1,7 +1,32 @@
+<?Php 
+    require_once './classes/Socio.php';
+    require_once './classes/SocioParentela.php';
+?>
 
+<div id="my_tabbar" style="width:100%; height:600px;"></div>
 <div id="modSocioForm"></div>
+<div id="modSocioParentela">
+    
+</div>
+
 
 <script>
+    
+    myTabbar = new dhtmlXTabBar("my_tabbar");
+			
+    myTabbar.addTab("a1", "Modifica socio", null, null, true);
+    myTabbar.addTab("a2", "Parentela");
+
+    myTabbar.tabs("a1").attachObject("modSocioForm");
+    myTabbar.tabs("a2").attachObject("modSocioParentela");
+    
+    myTabbar.attachEvent("onTabClick", function(idClicked, idSelected){
+        if(idClicked == "a2")
+        {
+            load_parentela(<?php echo $_POST["id"] ?>);
+        }
+    });
+
     var modSocioForm = new dhtmlXForm("modSocioForm");
     
     modSocioForm.loadStruct("json_data/mod_socio.php?id="+<?php echo $_POST["id"] ?>, function(){});

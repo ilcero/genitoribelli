@@ -13,7 +13,7 @@ include 'inc/header.php';
 	<link rel="stylesheet" type="text/css" href="css/main.css"/>
 	<link rel="stylesheet" type="text/css" href="dhtmlx/codebase/fonts/font_roboto/roboto.css"/>
 	<!--<link rel="stylesheet" type="text/css" href="dhtmlx/codebase/dhtmlx.css"/>-->
-	<link rel="stylesheet" type="text/css" href="dhtmlx/skins/skyblue/dhtmlx.css"/>
+	<link rel="stylesheet" type="text/css" href="dhtmlx/skins/material/dhtmlx.css"/>
 	<script src="dhtmlx/codebase/dhtmlx.js"></script>
         <script>
             var gbMenu, sociGrid;

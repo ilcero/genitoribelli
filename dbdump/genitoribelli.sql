@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Ago 28, 2018 alle 16:13
+-- Creato il: Ago 30, 2018 alle 15:49
 -- Versione del server: 5.5.61
 -- Versione PHP: 7.2.9
 
@@ -75,19 +75,48 @@ CREATE TABLE `socio` (
   `codice_fiscale` varchar(16) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `tel` varchar(100) DEFAULT NULL,
-  `data_nascita` date DEFAULT NULL
+  `data_nascita` date DEFAULT NULL,
+  `note` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dump dei dati per la tabella `socio`
 --
 
-INSERT INTO `socio` (`id`, `numero_tessera`, `nome`, `cognome`, `codice_fiscale`, `email`, `tel`, `data_nascita`) VALUES
-(1, 1, 'Lisa', 'Visintini', 'VSNLIS81E34W678U', 'lisa.visintini@gmail.com', '12345', '1981-06-30'),
-(2, 2, 'Andrea', 'Cerottini', '', '', '', '2018-08-21'),
-(6, 3, 'Mario', 'Rossi', '', '', '', '2018-08-29'),
-(7, 4, 'Elisabetta', 'Verdi', 'elibet', 'eli@eli.it', '1234', '2018-08-01'),
-(8, 5, 'Alessandro', 'Marroni', '', '', '', '2018-09-01');
+INSERT INTO `socio` (`id`, `numero_tessera`, `nome`, `cognome`, `codice_fiscale`, `email`, `tel`, `data_nascita`, `note`) VALUES
+(1, 1, 'Lisa', 'Visintini', 'VSNLIS81E34W678U', 'lisa.visintini@gmail.com', '12345', '1981-06-30', ''),
+(2, 2, 'Giacomo', 'Petrolo', '', '', '', '2018-08-21', ''),
+(6, 3, 'Nina', 'Cerottini', '', '', '', '2018-08-29', ''),
+(9, 4, 'Tommaso', 'Petrolo', '', '', '', '2018-02-01', ''),
+(10, 5, 'Andrea', 'Cerottini', 'CRTNDR78T18A794M', 'andrea.cerottini@gmail.com', '3929849292', '2018-08-18', '');
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `socio_parentela`
+--
+
+CREATE TABLE `socio_parentela` (
+  `id` int(11) NOT NULL,
+  `socio_id` int(11) DEFAULT NULL,
+  `parente_id` int(11) DEFAULT NULL,
+  `parentela` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dump dei dati per la tabella `socio_parentela`
+--
+
+INSERT INTO `socio_parentela` (`id`, `socio_id`, `parente_id`, `parentela`) VALUES
+(1, 6, 1, 'MADRE'),
+(2, 6, 10, 'PADRE'),
+(3, 6, 2, 'FRATELLO'),
+(4, 6, 9, 'FRATELLO'),
+(5, 2, 1, 'MADRE'),
+(6, 2, 10, 'PADRE'),
+(7, 2, 9, 'FRATELLO'),
+(8, 9, 10, 'PADRE'),
+(9, 9, 1, 'MADRE');
 
 --
 -- Indici per le tabelle scaricate
@@ -106,6 +135,12 @@ ALTER TABLE `socio`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indici per le tabelle `socio_parentela`
+--
+ALTER TABLE `socio_parentela`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT per le tabelle scaricate
 --
 
@@ -119,7 +154,13 @@ ALTER TABLE `account`
 -- AUTO_INCREMENT per la tabella `socio`
 --
 ALTER TABLE `socio`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT per la tabella `socio_parentela`
+--
+ALTER TABLE `socio_parentela`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

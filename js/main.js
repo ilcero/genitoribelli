@@ -29,3 +29,53 @@ function menu_go_to(id)
     }
 }
 
+function load_parentela(socio_id)
+{
+//    alert('load_parentela')
+    var load_parentela = new Request.HTML({
+        url: 'parentela.php',
+        update: $('modSocioParentela'),
+            onSuccess: function(tree, elements, html, js) {
+//                alert('success');
+        }
+    });
+    load_parentela.post({'socio_id': socio_id});
+}
+
+function aggiugni_parente(socio_id)
+{
+    var load_parentela = new Request.HTML({
+        url: 'form_aggiunta_parente.php',
+        update: $('form_aggiunta_parente'),
+            onSuccess: function(tree, elements, html, js) {
+//                alert('success');
+        }
+    });
+    load_parentela.post({'socio_id': socio_id});
+}
+function aggiugni_parente_action(socio_id)
+{
+    var parente_id = $('parente_id').value;
+    var grado_parentela = $('grado_parentela').value;
+    
+    if(parente_id == "" || parente_id == "undefined")
+    {
+        alert("ATTENZIONE: scegliere il parente");
+        return false;
+    }
+    else if(grado_parentela == "" || grado_parentela == "undefined")
+    {
+        alert("ATTENZIONE: scegliere il grado di parentela");
+        return false;
+    }
+    else
+    {
+        var aggiugni_parente_action = new Request.HTML({
+            url: 'aggiugni_parente_action.php',
+                onSuccess: function(tree, elements, html, js) {
+                    load_parentela(socio_id);
+            }
+        });
+        aggiugni_parente_action.post({'socio_id': socio_id, 'parente_id' : parente_id, 'grado_parentela' : grado_parentela});
+    }
+}
