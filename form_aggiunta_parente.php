@@ -1,6 +1,7 @@
 <?Php
     require_once './classes/Socio.php';
 ?>
+
 <br/>
 <table class="form_aggiunta_parente">
 <tr><td style="text-align:right;width:120px;">Grado parentela</td><td><select id="grado_parentela">
@@ -23,3 +24,10 @@
 <tr><td></td><td><input type="button" class="button_aggiungi" value="SALVA" onclick="aggiugni_parente_action(<?Php echo $_POST["socio_id"]; ?>)"/></td></tr>
 </table>
 <br/>
+
+<script>
+
+var parentelaCombo = dhtmlXComboFromSelect("grado_parentela");
+var parenteCombo = dhtmlXComboFromSelect("parente_id");
+parenteCombo.enableFilteringMode("between");
+</script>

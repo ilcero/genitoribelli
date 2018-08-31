@@ -55,8 +55,9 @@ function aggiugni_parente(socio_id)
 }
 function aggiugni_parente_action(socio_id)
 {
-    var parente_id = $('parente_id').value;
-    var grado_parentela = $('grado_parentela').value;
+    var parente_id =  parenteCombo.getSelectedValue();
+    var grado_parentela = parentelaCombo.getSelectedValue();
+    
     
     if(parente_id == "" || parente_id == "undefined")
     {
