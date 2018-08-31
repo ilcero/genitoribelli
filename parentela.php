@@ -10,36 +10,37 @@
 <?Php
     
         $socio_parentela = SocioParentela::get_by_socio($_POST["socio_id"]);
-
+        
+        echo '<table class="table_parentela" cellspacing="0" cellpadding="10">';
         if($socio_parentela != null && $socio_parentela != "")
         {
-            echo '<table class="table_parentela" cellspacing="0" cellpadding="10">';
+            
             foreach($socio_parentela as $id => $obj)
             {
                 $socio = Socio::get_by_id($obj->getParente_id());
                 if($socio != null && $socio != "")
                 {
-                    echo '<tr><td>'.$obj->getParentela()."</td><td>".$socio->getCognomeNome()."</td></tr>";
+                    echo '<tr><td>'.$obj->getParentela()."</td><td>".$socio->getCognomeNome()."</td><td><input class=\"button_aggiungi\" type=\"button\" onclick=\"elimina_parente_action(".$obj->getId().",".$_POST["socio_id"].")\" value=\"elimina\"/></td></tr>";
                 }
             }
-            echo '</table>';
+//            echo '</table>';
         }
         
         $socio_parentela = SocioParentela::get_by_parente($_POST["socio_id"]);
 
         if($socio_parentela != null && $socio_parentela != "")
         {
-            echo '<table class="table_parentela" cellspacing="0" cellpadding="10">';
+//            echo '<table class="table_parentela" cellspacing="0" cellpadding="10">';
             foreach($socio_parentela as $id => $obj)
             {
                 $socio = Socio::get_by_id($obj->getSocio_id());
                 if($socio != null && $socio != "")
                 {
-                    echo '<tr><td>'.$obj->getParentela()." di </td><td>".$socio->getCognomeNome()."</td></tr>";
+                    echo '<tr><td>'.$obj->getParentela()." di </td><td>".$socio->getCognomeNome()."</td><td><input class=\"button_aggiungi\" type=\"button\" onclick=\"elimina_parente_action(".$obj->getId().",".$_POST["socio_id"].")\" value=\"elimina\"/></td></tr>";
                 }
             }
-            echo '</table>';
+            
         }
-        
+        echo '</table>';
         
 ?>

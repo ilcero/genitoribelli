@@ -59,14 +59,14 @@ html{
     color: white;
     padding: 3px;
     background-color: #0096eb;
-    border: 1px solid darkgreen;
+    border: 1px solid #0096eb;
 }
 .button_aggiungi_fullsize{
     color: white;
     width: 100%;
     padding: 3px;
     background-color: #0096eb;
-    border: 1px solid darkgreen;
+    border: 1px solid #0096eb;
 }
 .success_message{
     color: green;

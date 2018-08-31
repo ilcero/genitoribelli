@@ -60,6 +60,16 @@ class SocioParentela {
         return $res;
     }
     
+    public function delete()
+    {
+        $db = new Db();
+        $conn = $db->connect();
+        $res = $conn->query("DELETE FROM socio_parentela WHERE id = ".$this->getId());
+               
+        $conn->close();
+        return $res;
+    }
+    
     static function get_object_from_db($row)
     {
         $socio_parentela = new SocioParentela();

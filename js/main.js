@@ -80,3 +80,15 @@ function aggiugni_parente_action(socio_id)
         aggiugni_parente_action.post({'socio_id': socio_id, 'parente_id' : parente_id, 'grado_parentela' : grado_parentela});
     }
 }
+
+function elimina_parente_action(id, socio_id)
+{
+//    alert(id)
+    var elimina_parente_action = new Request.HTML({
+        url: 'sql/elimina_parente.php',
+            onSuccess: function(tree, elements, html, js) {
+                load_parentela(socio_id);
+        }
+    });
+    elimina_parente_action.post({'id': id});
+}
