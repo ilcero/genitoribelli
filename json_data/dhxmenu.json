@@ -1,0 +1,9 @@
+[
+	{id:"soci", text:"Soci", items:[
+		{id: "nuovo", text: "Nuovo socio", img: "new.gif", imgdis: "new_dis.gif"},
+		{id: "file_sep_1", type: "separator"},
+		{id: "elenco", text: "Elenco", img: "open.gif", imgdis: "open_dis.gif"}
+	]},
+	{id: "sep_top_1", type: "separator"},
+	
+]

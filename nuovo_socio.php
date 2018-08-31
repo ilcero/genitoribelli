@@ -21,7 +21,7 @@ include 'inc/header.php';
                 gbMenu = new dhtmlXMenuObject({
                     parent: "gbMenu",
                     icons_path: "dhtmlx/common_menu/imgs/",
-                    json: "dhtmlx/common_menu/dhxmenu.json",
+                    json: "json_data/dhxmenu.json",
                     onload: function() {
                             // callback
                     }
@@ -86,7 +86,7 @@ include 'inc/header.php';
             <?php include 'inc/loggeduser.php';?>
             <br/>
                 <div id="gbMenu"></div><br/>
-                NUOVO SOCIO<br/><br/>
+                <br/>
                 <div id="nuovoSocioForm"></div>
 	</div>
 </body>

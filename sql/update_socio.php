@@ -17,11 +17,11 @@ $socio->setData_nascita(Utils::reverse_date($_POST["data_nascita"]));
 
 if($socio->update())
 {
-    echo'salvataggio effettuato';
+    echo'<p class="success_message">salvataggio effettuato</p>';
 }
 else 
 {
-     echo'errore salvataggio';
+     echo'<p class="error_message">errore salvataggio</p>';
 }
 
 ?>

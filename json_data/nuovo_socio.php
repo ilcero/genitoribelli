@@ -8,7 +8,7 @@ $formData[0]["labelWidth"] = "130";
 $formData[0]["inputWidth"] = "250";
 
 $formData[1]["type"] = "fieldset";
-$formData[1]["label"] = "Modifica socio";
+$formData[1]["label"] = "Nuovo socio";
 $formData[1]["inputWidth"] = "500";
 
 
@@ -55,7 +55,7 @@ $list[6]["type"] = "editor";
 $list[6]["name"] = "note";
 $list[6]["label"] = "Note";
 $list[6]["inputWidth"] = "300";
-$list[6]["inputHeight"] = "250";
+$list[6]["inputHeight"] = "150";
 $list[6]["value"] = "";
 
 $list[7]["type"] = "button";

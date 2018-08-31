@@ -59,7 +59,7 @@ $list[6]["type"] = "editor";
 $list[6]["name"] = "note";
 $list[6]["label"] = "Note";
 $list[6]["inputWidth"] = "300";
-$list[6]["inputHeight"] = "250";
+$list[6]["inputHeight"] = "180";
 $list[6]["value"] = $socio->getNote();
 
 $list[7]["type"] = "block";
@@ -81,20 +81,8 @@ $list[6]["list"] = $listbtn;
 
 $formData[1]["list"] = $list;
 
-
-//s
-
-
-
 echo json_encode($formData);
 
-//                    {type: "settings", position: "label-left", labelWidth: 130, inputWidth: 120},
-//                    {type: "fieldset", label: "Autenticazione", inputWidth: 340, list:[
-//                        {type: "input", name: "user", label: "Username", value: "root"},
-//                        {type: "password", name: "passwd", label: "Password", value: "root"},
-//                        {type: "button", value: "ACCEDI"}
-//                    ]}
-//                ];
 ?>
 
 

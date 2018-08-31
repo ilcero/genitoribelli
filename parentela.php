@@ -2,7 +2,10 @@
     require_once './classes/Socio.php';
     require_once './classes/SocioParentela.php';
 ?>
-<input type="button" value="AGGIUNGI PARENTE" onclick="aggiugni_parente(<?Php echo $_POST["socio_id"]; ?>)"/>
+<br/>
+<input type="button" value="AGGIUNGI PARENTE" class="button_aggiungi_fullsize" onclick="aggiugni_parente(<?Php echo $_POST["socio_id"]; ?>)"/>
+<br/>
+<br/>
 <div id="form_aggiunta_parente"></div>
 <?Php
     
@@ -10,7 +13,7 @@
 
         if($socio_parentela != null && $socio_parentela != "")
         {
-            echo '<table>';
+            echo '<table class="table_parentela" cellspacing="0" cellpadding="10">';
             foreach($socio_parentela as $id => $obj)
             {
                 $socio = Socio::get_by_id($obj->getParente_id());
@@ -26,7 +29,7 @@
 
         if($socio_parentela != null && $socio_parentela != "")
         {
-            echo '<table>';
+            echo '<table class="table_parentela" cellspacing="0" cellpadding="10">';
             foreach($socio_parentela as $id => $obj)
             {
                 $socio = Socio::get_by_id($obj->getSocio_id());

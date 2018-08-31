@@ -110,21 +110,14 @@ class Socio {
                 . " VALUES "
                 . "("
                     . "getNuovoNumeroTessera(), "
-                    . "'".$this->getNome()."', "
-                    . "'".$this->getCognome()."', "
-                    . "'".$this->getCodice_fiscale()."', "
-                    . "'".$this->getEmail()."', "
-                    . "'".$this->getTel()."', "
+                    . "'".$conn->real_escape_string($this->getNome())."', "
+                    . "'".$conn->real_escape_string($this->getCognome())."', "
+                    . "'".$conn->real_escape_string($this->getCodice_fiscale())."', "
+                    . "'".$conn->real_escape_string($this->getEmail())."', "
+                    . "'".$conn->real_escape_string($this->getTel())."', "
                     . "'".$this->getData_nascita()."', "
-                    . "'".$this->getNote()."'"
+                    . "'".$conn->real_escape_string($this->getNote())."'"
                 . ")");
-//                . " nome = '".$this->getNome()."', "
-//                . " cognome = '".$this->getCognome()."', "
-//                . " codice_fiscale = '".$this->getCodice_fiscale()."', "
-//                . " email = '".$this->getEmail()."', "
-//                . " tel = '".$this->getTel()."', ";
-//                . " data_nascita = '".$this->getData_nascita();
-                
         $conn->close();
         return $res;
     }
@@ -134,13 +127,13 @@ class Socio {
         $db = new Db();
         $conn = $db->connect();
         $res = $conn->query("UPDATE socio SET "
-                . " nome = '".$this->getNome()."', "
-                . " cognome = '".$this->getCognome()."', "
-                . " codice_fiscale = '".$this->getCodice_fiscale()."', "
-                . " email = '".$this->getEmail()."', "
-                . " tel = '".$this->getTel()."', "
+                . " nome = '".$conn->real_escape_string($this->getNome())."', "
+                . " cognome = '".$conn->real_escape_string($this->getCognome())."', "
+                . " codice_fiscale = '".$conn->real_escape_string($this->getCodice_fiscale())."', "
+                . " email = '".$conn->real_escape_string($this->getEmail())."', "
+                . " tel = '".$conn->real_escape_string($this->getTel())."', "
                 . " data_nascita = '".$this->getData_nascita()."', "
-                . " note = '".$this->getNote()."' "
+                . " note = '".$conn->real_escape_string($this->getNote())."' "
                 . " WHERE "
                 . " id = ".$this->getId());
         $conn->close();

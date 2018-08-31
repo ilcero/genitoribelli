@@ -21,7 +21,7 @@ include 'inc/header.php';
                 gbMenu = new dhtmlXMenuObject({
                     parent: "gbMenu",
                     icons_path: "dhtmlx/common_menu/imgs/",
-                    json: "dhtmlx/common_menu/dhxmenu.json",
+                    json: "json_data/dhxmenu.json",
                     onload: function() {
                             // callback
                     }
@@ -30,6 +30,10 @@ include 'inc/header.php';
                 gbMenu.attachEvent("onClick", function(id, zoneId, cas){
                     menu_go_to(id);
                 });
+                
+                function str_custom(a,b,order){ 
+                    return (a.toLowerCase()>b.toLowerCase()?1:-1)*(order=="asc"?1:-1);
+                };
                 
                 sociGrid = new dhtmlXGridObject('socigridbox');
                 sociGrid.setImagePath("dhtmlx/skins/skyblue/imgs/");
@@ -40,6 +44,8 @@ include 'inc/header.php';
                 sociGrid.setColTypes("ro,ro,ro,ro,ro,ro,ro");
                 sociGrid.setColSorting("int,str,str,str,str,str,str");
                 sociGrid.attachEvent("onRowSelect",open_socio_details);
+                sociGrid.setCustomSorting(str_custom,1);
+                sociGrid.setCustomSorting(str_custom,2);
                 sociGrid.init();
                 sociGrid.load("json_data/soci_all.php","json");
             }
