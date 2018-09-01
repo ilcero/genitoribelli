@@ -19,13 +19,21 @@ function refreshSociGrid()
 
 function menu_go_to(id)
 {
-    if(id == "elenco")
+    if(id == "elenco_soci")
     {
         window.location.href = "index.php";
     }
-    else if(id == "nuovo")
+    else if(id == "nuovo_socio")
     {
         window.location.href = "nuovo_socio.php";
+    }
+    else if(id == "elenco_corsi")
+    {
+        window.location.href = "elenco_corsi.php";
+    }
+    else if(id == "nuovo_corso")
+    {
+        window.location.href = "nuovo_corso.php";
     }
 }
 
@@ -84,11 +92,14 @@ function aggiugni_parente_action(socio_id)
 function elimina_parente_action(id, socio_id)
 {
 //    alert(id)
-    var elimina_parente_action = new Request.HTML({
-        url: 'sql/elimina_parente.php',
-            onSuccess: function(tree, elements, html, js) {
-                load_parentela(socio_id);
-        }
-    });
-    elimina_parente_action.post({'id': id});
+    if(confirm("ATTENZIONE: sicuro di voler procedere con l'eliminazione?"))
+    {
+        var elimina_parente_action = new Request.HTML({
+            url: 'sql/elimina_parente.php',
+                onSuccess: function(tree, elements, html, js) {
+                    load_parentela(socio_id);
+            }
+        });
+        elimina_parente_action.post({'id': id});
+    }
 }
