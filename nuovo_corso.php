@@ -40,6 +40,7 @@ include 'inc/header.php';
                     var insegnante_id = nuovoSocioForm.getItemValue("insegnante_id");
                     var data_inizio = nuovoSocioForm.getItemValue("data_inizio", true);
                     var data_fine = nuovoSocioForm.getItemValue("data_fine", true);
+                    var note = nuovoSocioForm.getItemValue("note");
 
                     if(nome == "" || nome == "undefined")
                     {
@@ -69,7 +70,8 @@ include 'inc/header.php';
                             'descrizione': descrizione,
                             'insegnante_id': insegnante_id,
                             'data_inizio': data_inizio,
-                            'data_fine': data_fine
+                            'data_fine': data_fine, 
+                            'note': note
                         });
                     }
                 })

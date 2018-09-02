@@ -37,12 +37,12 @@ include 'inc/header.php';
                 
                 sociGrid = new dhtmlXGridObject('corsigridbox');
                 sociGrid.setImagePath("dhtmlx/skins/skyblue/imgs/");
-                sociGrid.setHeader("Nome, Descrizione, Inegnante, Data inizio, Data fine");
-                sociGrid.attachHeader("#text_filter,#text_filter,#text_filter,&nbsp;&nbsp;");
-                sociGrid.setInitWidths("*,*,*,*,*");
-                sociGrid.setColAlign("left,left,left,left,left");
-                sociGrid.setColTypes("ro,ro,ro,ro,ro,ro,ro");
-                sociGrid.setColSorting("str,str,str,date,date");
+                sociGrid.setHeader("Nome, Descrizione, Inegnante, Data inizio, Data fine, Note");
+                sociGrid.attachHeader("#text_filter,#text_filter,#text_filter,&nbsp;&nbsp;&nbsp;");
+                sociGrid.setInitWidths("*,*,*,*,*,*");
+                sociGrid.setColAlign("left,left,left,left,left,left");
+                sociGrid.setColTypes("ro,ro,ro,ro,ro,ro,ro,ro");
+                sociGrid.setColSorting("str,str,str,date,date,str");
                 sociGrid.attachEvent("onRowSelect",open_socio_details);
                 sociGrid.enableColumnAutoSize(true);
                 sociGrid.enableAutoHeight(true);

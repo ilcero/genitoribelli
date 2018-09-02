@@ -9,6 +9,7 @@ $corso = new Corso();
 $corso->setNome($_POST["nome"]);
 $corso->setDescrizione($_POST["descrizione"]);
 $corso->setInsegnante_id($_POST["insegnante_id"]);
+$corso->setNote($_POST["note"]);
 $corso->setData_inizio(Utils::reverse_date($_POST["data_inizio"]));
 $corso->setData_fine(Utils::reverse_date($_POST["data_fine"]));
 print_r($corso);

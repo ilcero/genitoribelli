@@ -17,6 +17,7 @@ if($corso != NULL)
         $va[2] = $socio[$obj->getInsegnante_id()]->getCognomeNome();
         $va[3] = $obj->getData_inizio();
         $va[4] = $obj->getData_fine();
+        $va[5] = $obj->getNote();
         
         $s["id"]=$id;
         $s["data"]=$va;

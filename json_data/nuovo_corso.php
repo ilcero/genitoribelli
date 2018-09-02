@@ -63,9 +63,16 @@ $list[4]["label"] = "Data fine";
 $list[4]["value"] = "";
 $list[4]["required"] = true;
 
-$list[5]["type"] = "button";
-$list[5]["label"] = "salva";
-$list[5]["value"] = "salva";
+$list[5]["type"] = "editor";
+$list[5]["name"] = "note";
+$list[5]["label"] = "Note";
+$list[5]["inputWidth"] = "300";
+$list[5]["inputHeight"] = "150";
+$list[5]["value"] = "";
+
+$list[6]["type"] = "button";
+$list[6]["label"] = "salva";
+$list[6]["value"] = "salva";
 
 $formData[1]["list"] = $list;
 
