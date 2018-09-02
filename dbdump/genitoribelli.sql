@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Set 01, 2018 alle 19:01
+-- Creato il: Set 02, 2018 alle 07:16
 -- Versione del server: 5.5.61
 -- Versione PHP: 7.2.9
 
@@ -84,17 +84,19 @@ CREATE TABLE `corso` (
   `descrizione` text,
   `insegnante_id` int(11) DEFAULT NULL,
   `data_inizio` date DEFAULT NULL,
-  `data_fine` date DEFAULT NULL
+  `data_fine` date DEFAULT NULL,
+  `note` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dump dei dati per la tabella `corso`
 --
 
-INSERT INTO `corso` (`id`, `nome`, `descrizione`, `insegnante_id`, `data_inizio`, `data_fine`) VALUES
-(1, 'wefw', 'fwefwef', 13, '2018-09-01', '2018-09-30'),
-(2, 'wefw', 'fwefwef', 13, '2018-09-01', '2018-09-30'),
-(3, 'Arte', 'arte desc', 10, '2018-09-01', '2018-12-19');
+INSERT INTO `corso` (`id`, `nome`, `descrizione`, `insegnante_id`, `data_inizio`, `data_fine`, `note`) VALUES
+(1, 'wefw', 'fwefwef', 13, '2018-09-01', '2018-09-30', NULL),
+(2, 'wefw', 'fwefwef', 13, '2018-09-01', '2018-09-30', NULL),
+(3, 'Arte', 'arte desc', 10, '2018-09-01', '2018-12-19', NULL),
+(4, 's', 's', 13, '2018-09-01', '2018-09-02', 'note');
 
 -- --------------------------------------------------------
 
@@ -251,7 +253,7 @@ ALTER TABLE `classe`
 -- AUTO_INCREMENT per la tabella `corso`
 --
 ALTER TABLE `corso`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT per la tabella `corso_elemento`
