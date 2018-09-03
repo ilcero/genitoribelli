@@ -92,6 +92,23 @@ class Corso {
         return $res;
     }
     
+    public function update()
+    {
+        $db = new Db();
+        $conn = $db->connect();
+        $res = $conn->query("UPDATE corso SET "
+                . " nome = '".$conn->real_escape_string($this->getNome())."', "
+                . " descrizione = '".$conn->real_escape_string($this->getDescrizione())."', "
+                . " insegnante_id = '".$conn->real_escape_string($this->getInsegnante_id())."', "
+                . " data_inizio = '".$conn->real_escape_string($this->getData_inizio())."', "
+                . " data_fine = '".$conn->real_escape_string($this->getData_fine())."', "
+                . " note = '".$conn->real_escape_string($this->getNote())."' "
+                . " WHERE "
+                . " id = ".$this->getId());
+        $conn->close();
+        return $res;
+    }
+    
     static function get_object_from_db($row)
     {
         $corso = new Corso();
@@ -119,6 +136,25 @@ class Corso {
             // output data of each row
             while($row = $result->fetch_assoc()) {
                 $corso[$row["id"]] = Corso::get_object_from_db($row);
+            }
+        } 
+        $conn->close();
+        return $corso;
+    }
+    
+    static function get_by_id($id)
+    {
+        $corso = null;
+        $db = new Db();
+        $conn = $db->connect();
+        
+        $sql = "SELECT * FROM corso WHERE id =".$id;
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                $corso = Corso::get_object_from_db($row);
             }
         } 
         $conn->close();

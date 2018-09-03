@@ -57,18 +57,12 @@ include 'inc/header.php';
 	<div>
             <?php include 'inc/loggeduser.php';?>
             <br/>
-                <div id="gbMenu"></div><br/>
-                <div id="container">
-                    <div id="socigridbox"></div>
-                    <div id="socigriddetails"></div>
-                    <div style="clear:both;"></div>
-                </div>
-<!--                <table id="container" style="width: 100%">
-                    <tr>
-                        <td style="width:60%"><div id="socigridbox"></div></td>
-                        <td style="vertical-align:top"><div id="socigriddetails"></div></td>
-                    </tr>
-                </table>-->
+            <div id="gbMenu"></div><br/>
+            <div id="container">
+                <div id="socigridbox"></div>
+                <div id="socigriddetails"></div>
+                <div style="clear:both;"></div>
+            </div>
 	</div>
 </body>
 </html>

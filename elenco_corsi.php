@@ -16,7 +16,7 @@ include 'inc/header.php';
 	<link rel="stylesheet" type="text/css" href="dhtmlx/skins/material/dhtmlx.css"/>
 	<script src="dhtmlx/codebase/dhtmlx.js"></script>
         <script>
-            var gbMenu, sociGrid;
+            var gbMenu, corsiGrid;
             function doOnLoad() {
                 gbMenu = new dhtmlXMenuObject({
                     parent: "gbMenu",
@@ -35,21 +35,21 @@ include 'inc/header.php';
                     return (a.toLowerCase()>b.toLowerCase()?1:-1)*(order=="asc"?1:-1);
                 };
                 
-                sociGrid = new dhtmlXGridObject('corsigridbox');
-                sociGrid.setImagePath("dhtmlx/skins/skyblue/imgs/");
-                sociGrid.setHeader("Nome, Descrizione, Inegnante, Data inizio, Data fine, Note");
-                sociGrid.attachHeader("#text_filter,#text_filter,#text_filter,&nbsp;&nbsp;&nbsp;");
-                sociGrid.setInitWidths("*,*,*,*,*,*");
-                sociGrid.setColAlign("left,left,left,left,left,left");
-                sociGrid.setColTypes("ro,ro,ro,ro,ro,ro,ro,ro");
-                sociGrid.setColSorting("str,str,str,date,date,str");
-                sociGrid.attachEvent("onRowSelect",open_socio_details);
-                sociGrid.enableColumnAutoSize(true);
-                sociGrid.enableAutoHeight(true);
-                sociGrid.setCustomSorting(str_custom,1);
-                sociGrid.setCustomSorting(str_custom,2);
-                sociGrid.init();
-                sociGrid.load("json_data/corsi_all.php","json");
+                corsiGrid = new dhtmlXGridObject('corsigridbox');
+                corsiGrid.setImagePath("dhtmlx/skins/skyblue/imgs/");
+                corsiGrid.setHeader("Nome, Descrizione, Inegnante, Data inizio, Data fine, Note");
+                corsiGrid.attachHeader("#text_filter,#text_filter,#text_filter,&nbsp;,&nbsp;,&nbsp;");
+                corsiGrid.setInitWidths("*,*,*,*,*,*");
+                corsiGrid.setColAlign("left,left,left,left,left,left");
+                corsiGrid.setColTypes("ro,ro,ro,ro,ro,ro,ro,ro");
+                corsiGrid.setColSorting("str,str,str,date,date,str");
+                corsiGrid.attachEvent("onRowSelect",open_corso_details);
+                corsiGrid.enableColumnAutoSize(true);
+                corsiGrid.enableAutoHeight(true);
+                corsiGrid.setCustomSorting(str_custom,1);
+                corsiGrid.setCustomSorting(str_custom,2);
+                corsiGrid.init();
+                corsiGrid.load("json_data/corsi_all.php","json");
             }
     </script>
 </head>
@@ -57,18 +57,12 @@ include 'inc/header.php';
 	<div>
             <?php include 'inc/loggeduser.php';?>
             <br/>
-                <div id="gbMenu"></div><br/>
-                <div id="container">
-                    <div id="corsigridbox"></div>
-                    <div id="corsigriddetails"></div>
-                    <div style="clear:both;"></div>
-                </div>
-<!--                <table id="container" style="width: 100%">
-                    <tr>
-                        <td style="width:60%"><div id="socigridbox"></div></td>
-                        <td style="vertical-align:top"><div id="socigriddetails"></div></td>
-                    </tr>
-                </table>-->
+            <div id="gbMenu"></div><br/>
+            <div id="container">
+                <div id="corsigridbox"></div>
+                <div id="corsigriddetails"></div>
+                <div style="clear:both;"></div>
+            </div>
 	</div>
 </body>
 </html>

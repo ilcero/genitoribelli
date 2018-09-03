@@ -16,6 +16,12 @@ function refreshSociGrid()
     sociGrid.clearAll()
     sociGrid.load("json_data/soci_all.php","json");
 }
+function refreshCorsiGrid()
+{
+//    alert(sociGrid);
+    corsiGrid.clearAll()
+    corsiGrid.load("json_data/corsi_all.php","json");
+}
 
 function menu_go_to(id)
 {
@@ -102,4 +108,28 @@ function elimina_parente_action(id, socio_id)
         });
         elimina_parente_action.post({'id': id});
     }
+}
+
+function open_corso_details(id)
+{
+    var open_corso_details = new Request.HTML({
+        url: 'corso_grid_details.php',
+        update: $('corsigriddetails'),
+            onSuccess: function(tree, elements, html, js) {
+                
+        }
+    });
+    open_corso_details.post({'id': id});
+}
+
+function load_mod_corso(corso_id)
+{
+    var load_mod_corso = new Request.HTML({
+        url: 'corso_mod_form.php',
+        update: $('modCorsoForm'),
+            onSuccess: function(tree, elements, html, js) {
+//                alert('succ')
+        }
+    });
+    load_mod_corso.post({'corso_id': corso_id});
 }
