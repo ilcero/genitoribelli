@@ -31,5 +31,35 @@ class Utils {
             }
         }
     }
+    
+    static function getGGFromInt($num_gg)
+    {
+        switch ($num_gg)
+        {
+            case "0":
+                return "LUNEDI";
+                break;
+            case "1":
+                return "MARTEDI";
+                break;
+            case "2":
+                return "MERCOLEDI";
+                break;
+            case "3":
+                return "GIOVEDI";
+                break;
+            case "4":
+                return "VENERDI";
+                break;
+            case "5":
+                return "SABATO";
+                break;
+            case "6":
+                return "DOMENICA";
+                break;
+            default :
+                return "";
+        }
+    }
 
 }

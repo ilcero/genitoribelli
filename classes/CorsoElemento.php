@@ -29,10 +29,18 @@ class CorsoElemento {
         return $this->data_inizio;
     }
 
+    function getData_inizio_display() {
+        return Utils::reverse_date($this->data_inizio);
+    }
+
     function getData_fine() {
         return $this->data_fine;
     }
-
+    
+    function getData_fine_display() {
+        return Utils::reverse_date($this->data_fine);
+    }
+    
     function getPrezzo() {
         return $this->prezzo;
     }
@@ -167,7 +175,7 @@ class CorsoElemento {
         $corso_elemento->setNote($row["note"]);
         $corso_elemento->setCorso_id($row["corso_id"]);
         
-        return $corso;
+        return $corso_elemento;
     }
     
     static function get_all_corso_elemento()
@@ -220,7 +228,7 @@ class CorsoElemento {
         if ($result->num_rows > 0) {
             // output data of each row
             while($row = $result->fetch_assoc()) {
-                $corso_elemento = CorsoElemento::get_object_from_db($row);
+                $corso_elemento[$row["id"]] = CorsoElemento::get_object_from_db($row);
             }
         } 
         $conn->close();
