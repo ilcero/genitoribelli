@@ -86,7 +86,7 @@ $listbtn[2]["label"] = "elimina";
 $listbtn[2]["value"] = "elimina";
 $listbtn[2]["name"] = "elimina";
 
-$list[4]["list"] = $listbtn;
+$list[6]["list"] = $listbtn;
 
 $formData[1]["list"] = $list;
 

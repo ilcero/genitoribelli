@@ -22,22 +22,22 @@
 
             if(nome == "" || nome == "undefined")
             {
-                alert('ATTENZIONE: inserire il nome');
+                alert("ATTENZIONE: inserire il nome");
                 return false;
             }
             else if(insegnante_id == "" || insegnante_id == "undefined")
             {
-                alert('ATTENZIONE: selezionare l'linsegnante);
+                alert("ATTENZIONE: selezionare l'linsegnante");
                 return false;
             }
             else if(data_inizio == "" || data_inizio == "undefined")
             {
-                alert('ATTENZIONE: inserire la data di inizio');
+                alert("ATTENZIONE: inserire la data di inizio");
                 return false;
             }
             else if(data_fine == "" || data_fine == "undefined")
             {
-                alert('ATTENZIONE: inserire la data di fine');
+                alert("ATTENZIONE: inserire la data di fine");
                 return false;
             }
             else
@@ -65,10 +65,10 @@
             if(confirm("Sicuro di voler procedere con l'eliminaizone?"))
             {
                 var elimina_socio = new Request.HTML({
-                    url: 'sql/elimina_socio.php',
-                    update: $('socigriddetails'),
+                    url: 'sql/elimina_corso.php',
+                    update: $('corsogriddetails'),
                         onSuccess: function(tree, elements, html, js) {
-                            refreshSociGrid();
+                            window.location.href = "elenco_corsi.php";
                     }
                 });
                 elimina_socio.post({'id': '<?php echo $_POST["corso_id"] ?>'});

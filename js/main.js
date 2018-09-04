@@ -133,3 +133,159 @@ function load_mod_corso(corso_id)
     });
     load_mod_corso.post({'corso_id': corso_id});
 }
+
+function load_elenco_elementi(corso_id)
+{
+    var load_elenco_elementi = new Request.HTML({
+        url: 'corso_elenco_elementi.php',
+        update: $('modEdizioni'),
+            onSuccess: function(tree, elements, html, js) {
+//                alert('succ')
+        }
+    });
+    load_elenco_elementi.post({'corso_id': corso_id});
+}
+
+function add_corso_elemento_win(corso_id)
+{
+//    alert(corso_id)
+    var dhxWins = new dhtmlXWindows("pippo");
+    var corso_elemento_win = dhxWins.createWindow("cew", 20, 30, 600, 600);
+    corso_elemento_win.setText("Nuova edizione");
+    corso_elemento_win.setModal(true);
+    dhxWins.window("cew").centerOnScreen();
+    
+    var corso_elemento_form = corso_elemento_win.attachForm();
+    corso_elemento_form.loadStruct("json_data/insert_corso_elemento.php?id="+corso_id, function(){});
+    corso_elemento_form.attachEvent("onXLE", function(){
+        cal = corso_elemento_form.getCalendar("ora_inizio");
+        cal.attachEvent("onShow", function(){
+                this.contDates.style.display="none";
+                this.contDays.style.display="none";
+                this.contMonth.style.display="none";
+        });
+        cal2 = corso_elemento_form.getCalendar("ora_fine");
+        cal2.attachEvent("onShow", function(){
+                this.contDates.style.display="none";
+                this.contDays.style.display="none";
+                this.contMonth.style.display="none";
+        });
+        
+        combo = corso_elemento_form.getCombo("giorni_settimana");
+        combo.allowFreeText(true);
+        combo.readonly(true);
+        combo.setComboText("");
+
+        combo.attachEvent("onCheck", function(value, state)
+        {
+            var txt = "";
+            combo.getChecked().forEach(function(value, index, array)
+            {
+//                alert(value)
+                switch(value) {
+                    case "0":
+                        txt = txt+" LU";
+                        break;
+                    case "1":
+                        txt = txt+" MA";
+                        break;
+                    case "2":
+                        txt = txt+" ME";
+                        break;
+                    case "3":
+                        txt = txt+" GI";
+                        break;
+                    case "4":
+                        txt = txt+" VE";
+                        break;
+                    case "5":
+                        txt = txt+" SA";
+                        break;
+                    case "6":
+                        txt = txt+" DO";
+                        break;
+                } 
+            });
+            combo.setComboText(txt);
+            combo.openSelect();
+        });
+        
+    });
+     
+    corso_elemento_form.attachEvent("onButtonClick", function(name)
+    {
+        if(name == "salva")
+        {
+            var nome = corso_elemento_form.getItemValue("nome");
+            var data_inizio = corso_elemento_form.getItemValue("data_inizio", true);
+            var data_fine = corso_elemento_form.getItemValue("data_fine", true);
+            var ora_inizio = corso_elemento_form.getItemValue("ora_inizio", true);
+            var ora_fine = corso_elemento_form.getItemValue("ora_fine", true);
+            var ora_fine = corso_elemento_form.getItemValue("ora_fine", true);
+            var giorni_settimana = corso_elemento_form.getCombo("giorni_settimana").getChecked();
+            var prezzo = corso_elemento_form.getItemValue("prezzo");
+            var note = corso_elemento_form.getItemValue("note");
+
+            if(nome == "" || nome == "undefined")
+            {
+                alert("ATTENZIONE: inserire il nome");
+                return false;
+            }
+            else if(data_inizio == "" || data_inizio == "undefined")
+            {
+                alert("ATTENZIONE: inserire la data di inizio");
+                return false;
+            }
+            else if(data_fine == "" || data_fine == "undefined")
+            {
+                alert("ATTENZIONE: inserire la data di fine");
+                return false;
+            }
+            else if(ora_inizio == "" || ora_inizio == "undefined")
+            {
+                alert("ATTENZIONE: inserire l'ora di inizio");
+                return false;
+            }
+            else if(ora_fine == "" || ora_fine == "undefined")
+            {
+                alert("ATTENZIONE: inserire l'ora di fine");
+                return false;
+            }
+            else
+            {
+                var update_socio = new Request.HTML({
+                    url: 'sql/insert_corso_elemento.php',
+                    update: $('corsogriddetails'),
+                        onSuccess: function(tree, elements, html, js) {
+                            dhxWins.window("cew").close();
+                    }
+                });
+                update_socio.post({
+                    'corso_id': corso_id,
+                    'nome': nome,
+                    'data_inizio': data_inizio,
+                    'data_fine': data_fine,
+                    'ora_inizio': ora_inizio,
+                    'ora_fine': ora_fine,
+                    'giorni_settimana': giorni_settimana,
+                    'prezzo': prezzo,
+                    'note': note
+                });
+            }
+        }
+        else if(name == "elimina")
+        {
+//            if(confirm("Sicuro di voler procedere con l'eliminaizone?"))
+//            {
+//                var elimina_socio = new Request.HTML({
+//                    url: 'sql/elimina_corso.php',
+//                    update: $('corsogriddetails'),
+//                        onSuccess: function(tree, elements, html, js) {
+//                            window.location.href = "elenco_corsi.php";
+//                    }
+//                });
+//                elimina_socio.post({'id': '<?php echo $_POST["corso_id"] ?>'});
+//            }
+        }
+    });
+}

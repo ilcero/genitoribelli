@@ -21,6 +21,12 @@
         {
             load_mod_corso(<?php echo $_POST["id"] ?>);
         }
+        else if(idClicked == "a1")
+        {
+            load_elenco_elementi(<?php echo $_POST["id"] ?>);
+        }
     });
+    
+    load_elenco_elementi(<?php echo $_POST["id"] ?>);
 
 </script>

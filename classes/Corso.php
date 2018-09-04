@@ -109,6 +109,16 @@ class Corso {
         return $res;
     }
     
+    public function delete()
+    {
+        $db = new Db();
+        $conn = $db->connect();
+        $res = $conn->query("DELETE FROM corso WHERE id = ".$this->getId());
+               
+        $conn->close();
+        return $res;
+    }
+    
     static function get_object_from_db($row)
     {
         $corso = new Corso();
