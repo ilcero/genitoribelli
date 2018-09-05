@@ -45,7 +45,7 @@ include 'inc/header.php';
                 corsiGrid.setColSorting("str,str,str,date,date,str");
                 corsiGrid.attachEvent("onRowSelect",open_corso_details);
                 corsiGrid.enableColumnAutoSize(true);
-                corsiGrid.enableAutoHeight(true);
+//                corsiGrid.enableAutoHeight(true);
                 corsiGrid.setCustomSorting(str_custom,1);
                 corsiGrid.setCustomSorting(str_custom,2);
                 corsiGrid.init();
@@ -59,9 +59,9 @@ include 'inc/header.php';
             <br/>
             <div id="gbMenu"></div><br/>
             <div id="container">
-                <div id="corsigridbox"></div>
+                <div id="corsigridbox" style="height: 520px;"></div>
                 <div id="corsigriddetails"></div>
-                <div style="clear:both;"></div>
+                <div style="clear:both;" id="iscritti_corso_edizione"></div>
             </div>
 	</div>
 </body>

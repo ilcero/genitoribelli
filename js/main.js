@@ -253,14 +253,15 @@ function add_corso_elemento_win(corso_id)
             }
             else
             {
-                var update_socio = new Request.HTML({
+                var insert_corso_elemento = new Request.HTML({
                     url: 'sql/insert_corso_elemento.php',
                     update: $('corsogriddetails'),
                         onSuccess: function(tree, elements, html, js) {
                             dhxWins.window("cew").close();
+                            load_elenco_elementi(corso_id);
                     }
                 });
-                update_socio.post({
+                insert_corso_elemento.post({
                     'corso_id': corso_id,
                     'nome': nome,
                     'data_inizio': data_inizio,
@@ -275,6 +276,7 @@ function add_corso_elemento_win(corso_id)
         }
         else if(name == "elimina")
         {
+            alert('elimina')
 //            if(confirm("Sicuro di voler procedere con l'eliminaizone?"))
 //            {
 //                var elimina_socio = new Request.HTML({
@@ -288,4 +290,30 @@ function add_corso_elemento_win(corso_id)
 //            }
         }
     });
+    
+}
+function del_corso_elemento(id, corso_id)
+{
+    if(confirm("Sicuro di voler procedere con l'eliminaizone?"))
+    {
+        var del_corso_elemento = new Request.HTML({
+            url: 'sql/elimina_corso_elemento.php',
+            update: $('corsogriddetails'),
+                onSuccess: function(tree, elements, html, js) {
+                    load_elenco_elementi(corso_id);
+            }
+        });
+        del_corso_elemento.post({'id': id});
+    }
+}
+
+function dettagli_corso_elemento(corso_elemento_id)
+{
+    var dhxWins = new dhtmlXWindows();
+    var dettagli_corso_elemento_win = dhxWins.createWindow("cew", 20, 30, 800, 600);
+    dettagli_corso_elemento_win.setText("Dettagli");
+    dettagli_corso_elemento_win.setModal(true);
+    dhxWins.window("cew").centerOnScreen();
+    
+    dettagli_corso_elemento_win.attachURL("dettagli_corso_elemento.php", true, {corso_elemento_id:corso_elemento_id});
 }

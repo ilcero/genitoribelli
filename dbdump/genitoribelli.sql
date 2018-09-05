@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 04, 2018 at 06:04 PM
+-- Generation Time: Sep 05, 2018 at 05:41 PM
 -- Server version: 5.5.46
 -- PHP Version: 5.4.45
 
@@ -88,15 +88,7 @@ CREATE TABLE IF NOT EXISTS `corso` (
   `data_fine` date DEFAULT NULL,
   `note` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
-
---
--- Dumping data for table `corso`
---
-
-INSERT INTO `corso` (`id`, `nome`, `descrizione`, `insegnante_id`, `data_inizio`, `data_fine`, `note`) VALUES
-(1, 'wefw', 'fwefwef', 13, '2018-09-01', '2018-09-30', NULL),
-(3, 'Arte1', 'arte desc1', 12, '2018-09-01', '2018-12-19', '');
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 -- --------------------------------------------------------
 
@@ -118,18 +110,6 @@ CREATE TABLE IF NOT EXISTS `corso_elemento` (
   PRIMARY KEY (`id`),
   KEY `fk_corso_idx` (`corso_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
-
---
--- Dumping data for table `corso_elemento`
---
-
-INSERT INTO `corso_elemento` (`id`, `data_inizio`, `data_fine`, `prezzo`, `ora_inizio`, `ora_fine`, `giorni_settimana`, `note`, `nome`, `corso_id`) VALUES
-(1, '2018-09-06', '2018-09-16', '44', '21:00:00', '22:00:00', 'Array', '', 'dsds', 3),
-(2, '2018-09-06', '2018-09-16', '44', '21:00:00', '22:00:00', 'Array', '', 'dsds', 3),
-(3, '2018-09-06', '2018-09-16', '44', '21:00:00', '22:00:00', 'Array', '', 'dsds', 3),
-(4, '2018-09-06', '2018-09-16', '44', '21:00:00', '22:00:00', 'Array', '', 'dsds', 3),
-(5, '2018-09-06', '2018-09-16', '44', '21:00:00', '22:00:00', '0|1|2|3', '', 'dsds', 3),
-(6, '2018-09-06', '2018-09-16', '44', '21:00:00', '22:00:00', '0|1|2|3', '', 'dsds', 3);
 
 -- --------------------------------------------------------
 
@@ -217,7 +197,7 @@ INSERT INTO `socio_parentela` (`id`, `socio_id`, `parente_id`, `parentela`) VALU
 -- Constraints for table `corso_elemento`
 --
 ALTER TABLE `corso_elemento`
-  ADD CONSTRAINT `fk_corso` FOREIGN KEY (`corso_id`) REFERENCES `corso` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_corso` FOREIGN KEY (`corso_id`) REFERENCES `corso` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

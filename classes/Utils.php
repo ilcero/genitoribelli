@@ -32,6 +32,20 @@ class Utils {
         }
     }
     
+    static function time_no_sec($time)
+    {
+        if($time == "0" || $time == null || $time == ""){
+            return ("");
+        }else{
+            $time_no_sec = null;
+            $temp = explode(":", $time);
+            $time_no_sec .= $temp[0];
+            $time_no_sec .= ":";
+            $time_no_sec .= $temp[1];
+        }
+        return $time_no_sec;
+    }
+    
     static function getGGFromInt($num_gg)
     {
         switch ($num_gg)

@@ -2,7 +2,7 @@
     require_once './classes/Corso.php';
 ?>
 
-<div id="my_tabbar" style="width:100%; height:600px;"></div>
+<div id="my_tabbar" style="width:100%; height:520px;"></div>
 <div id="modEdizioni"></div>
 <div id="modCorsoForm"></div>
 

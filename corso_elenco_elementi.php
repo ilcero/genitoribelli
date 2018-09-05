@@ -16,15 +16,18 @@ require_once './classes/CorsoElemento.php';
 <div id="lista_corso_elemento">
 
     <input type="button" class="button_aggiungi_fullsize" value="aggiungi edizione" onclick="add_corso_elemento_win(<?php echo $_POST["corso_id"] ?>)"/>
+    <br/>
+    <br/>
     <?Php
         $corso_elementi = CorsoElemento::get_by_corso_id($_POST["corso_id"]);
         if($corso_elementi != NULL)
         {
             foreach ($corso_elementi as $id => $obj)
             {
-                echo'<p><b>'.$obj->getNome().'</b> <em>dal '.$obj->getData_inizio_display().' al '.$obj->getData_fine_display().'</em></p>';
+                echo'<div class="line" onclick="dettagli_corso_elemento('.$id.')"><p><b>'.$obj->getNome().'</b> <em>('.$obj->getData_inizio_display().' - '.$obj->getData_fine_display().')</em></p>';
                 $gg_sett = "";
                 $num = 0;
+                echo'<div class="orari">';
                 foreach(explode("|", $obj->getGiorni_settimana())as $inx => $gg)
                 {
                     if($num > 0)
@@ -33,7 +36,11 @@ require_once './classes/CorsoElemento.php';
                     $num++;
                 }
                 echo'<br/>';
-                echo $obj->getOra_inizio().' - '.$obj->getOra_fine();
+                echo $obj->getOra_inizio_display().' - '.$obj->getOra_fine_display();
+                echo'</div>';
+                
+                echo'</div>';
+                echo'<div class="action"><input type="button" class="button_aggiungi" value="elimina" onclick="del_corso_elemento('.$id.','.$_POST["corso_id"].')"/></div>';
             }
         }
     ?>

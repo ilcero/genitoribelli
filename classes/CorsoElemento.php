@@ -49,8 +49,16 @@ class CorsoElemento {
         return $this->ora_inizio;
     }
 
+    function getOra_inizio_display() {
+        return Utils::time_no_sec($this->ora_inizio);
+    }
+
     function getOra_fine() {
         return $this->ora_fine;
+    }
+
+    function getOra_fine_display() {
+        return Utils::time_no_sec($this->ora_fine);
     }
 
     function getGiorni_settimana() {
