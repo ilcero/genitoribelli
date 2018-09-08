@@ -32,6 +32,29 @@ class Utils {
         }
     }
     
+    static function italian_date_time($date_time){
+        if($date_time == "" || $date_time == " " || $date_time == "0000-00-00 00:00:00"){
+            $date_time_reordered = "-";
+        }else{
+            $temp = explode(" ", $date_time);
+            $time_time = explode(":", $temp[1]);
+            $time = $time_time[0];
+            $time .= ":";
+            $time .= $time_time[1];
+            $temp_date = explode("-", $temp[0]);
+            $date = null;
+            for ($i = 2; $i >= 0; $i--){
+              $date .= $temp_date[$i];
+              if ( $i >=1){
+                $date .= '-';
+              }
+            }
+            $date_time_reordered = $date." ".$time;
+        }
+        return($date_time_reordered);
+    }
+
+    
     static function time_no_sec($time)
     {
         if($time == "0" || $time == null || $time == ""){

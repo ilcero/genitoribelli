@@ -1,20 +1,22 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.10.20
--- https://www.phpmyadmin.net
+-- version 4.8.3
+-- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 05, 2018 at 05:41 PM
--- Server version: 5.5.46
--- PHP Version: 5.4.45
+-- Creato il: Set 08, 2018 alle 20:07
+-- Versione del server: 5.5.61
+-- Versione PHP: 7.2.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `genitoribelli`
@@ -22,10 +24,9 @@ SET time_zone = "+00:00";
 
 DELIMITER $$
 --
--- Functions
+-- Funzioni
 --
-CREATE DEFINER=`root`@`localhost` FUNCTION `getNuovoNumeroTessera`() RETURNS int(11)
-BEGIN
+CREATE DEFINER=`root`@`localhost` FUNCTION `getNuovoNumeroTessera` () RETURNS INT(11) BEGIN
   
   DECLARE num INT(11);
  
@@ -41,21 +42,20 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `account`
+-- Struttura della tabella `account`
 --
 
-CREATE TABLE IF NOT EXISTS `account` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `account` (
+  `id` int(11) NOT NULL,
   `username` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
   `admin` tinyint(1) NOT NULL DEFAULT '0',
   `nome` varchar(45) DEFAULT NULL,
-  `cognome` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+  `cognome` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `account`
+-- Dump dei dati per la tabella `account`
 --
 
 INSERT INTO `account` (`id`, `username`, `password`, `admin`, `nome`, `cognome`) VALUES
@@ -64,40 +64,54 @@ INSERT INTO `account` (`id`, `username`, `password`, `admin`, `nome`, `cognome`)
 -- --------------------------------------------------------
 
 --
--- Table structure for table `classe`
+-- Struttura della tabella `classe`
 --
 
-CREATE TABLE IF NOT EXISTS `classe` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+CREATE TABLE `classe` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dump dei dati per la tabella `classe`
+--
+
+INSERT INTO `classe` (`id`, `nome`) VALUES
+(1, '1 A'),
+(2, '1 B');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `corso`
+-- Struttura della tabella `corso`
 --
 
-CREATE TABLE IF NOT EXISTS `corso` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `corso` (
+  `id` int(11) NOT NULL,
   `nome` varchar(255) DEFAULT NULL,
   `descrizione` text,
   `insegnante_id` int(11) DEFAULT NULL,
   `data_inizio` date DEFAULT NULL,
   `data_fine` date DEFAULT NULL,
-  `note` text,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+  `note` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dump dei dati per la tabella `corso`
+--
+
+INSERT INTO `corso` (`id`, `nome`, `descrizione`, `insegnante_id`, `data_inizio`, `data_fine`, `note`) VALUES
+(1, 'wefw', 'fwefwef', 13, '2018-09-01', '2018-09-30', NULL),
+(3, 'Arte', 'arte desc', 12, '2018-09-01', '2018-12-19', 'fsdfsfsfsd');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `corso_elemento`
+-- Struttura della tabella `corso_elemento`
 --
 
-CREATE TABLE IF NOT EXISTS `corso_elemento` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `corso_elemento` (
+  `id` int(11) NOT NULL,
   `data_inizio` date DEFAULT NULL,
   `data_fine` date DEFAULT NULL,
   `prezzo` decimal(10,0) DEFAULT NULL,
@@ -106,33 +120,67 @@ CREATE TABLE IF NOT EXISTS `corso_elemento` (
   `giorni_settimana` varchar(45) DEFAULT NULL,
   `note` text,
   `nome` varchar(255) DEFAULT NULL,
-  `corso_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_corso_idx` (`corso_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+  `corso_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dump dei dati per la tabella `corso_elemento`
+--
+
+INSERT INTO `corso_elemento` (`id`, `data_inizio`, `data_fine`, `prezzo`, `ora_inizio`, `ora_fine`, `giorni_settimana`, `note`, `nome`, `corso_id`) VALUES
+(2, '2018-09-06', '2018-09-16', '44', '21:00:00', '22:00:00', '3', '', 'dsds', 3),
+(3, '2018-09-06', '2018-09-16', '44', '21:00:00', '22:00:00', '2', '', 'dsds', 3),
+(4, '2018-09-06', '2018-09-16', '44', '21:00:00', '22:00:00', '1', '', 'dsds', 3),
+(5, '2018-09-06', '2018-09-16', '44', '21:00:00', '22:00:00', '0|1|2|3', '', 'dsds', 3),
+(6, '2018-09-06', '2018-09-16', '44', '21:00:00', '22:00:00', '0|1|2|3', '', 'dsds', 3),
+(7, '2018-09-01', '2018-09-16', '3', '16:00:00', '18:00:00', '0|2|4', '', 'edi1', 3),
+(8, '2018-09-01', '2018-09-09', '0', '00:00:00', '00:00:00', '0', '', 'tetetetet', 3),
+(10, '2018-09-01', '2018-09-30', '3', '15:00:00', '15:00:00', '0', '', 'edi', 1),
+(11, '2018-08-31', '2018-09-23', '3', '13:00:00', '17:00:00', '2|3', '', '3', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `corso_iscrizione`
+-- Struttura della tabella `corso_iscrizione`
 --
 
-CREATE TABLE IF NOT EXISTS `corso_iscrizione` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `corso_iscrizione` (
+  `id` int(11) NOT NULL,
   `socio_id` int(11) DEFAULT NULL,
+  `classe_id` int(11) NOT NULL,
   `note` text,
   `pagato` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`,`pagato`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `corso_id` int(11) NOT NULL,
+  `data_iscrizione` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dump dei dati per la tabella `corso_iscrizione`
+--
+
+INSERT INTO `corso_iscrizione` (`id`, `socio_id`, `classe_id`, `note`, `pagato`, `corso_id`, `data_iscrizione`) VALUES
+(1, 14, 1, '', 0, 2, '0000-00-00 00:00:00'),
+(2, 14, 1, '', 1, 2, '0000-00-00 00:00:00'),
+(3, 14, 1, '', 1, 2, '0000-00-00 00:00:00'),
+(4, 14, 1, '', 1, 2, '0000-00-00 00:00:00'),
+(5, 10, 1, '', 1, 2, '0000-00-00 00:00:00'),
+(6, 11, 2, '', 1, 2, '0000-00-00 00:00:00'),
+(7, 14, 1, '', 1, 2, '2018-09-08 00:00:00'),
+(8, 14, 1, '', 0, 2, '2018-09-08 07:09:42'),
+(9, 9, 1, '', 0, 2, '2018-09-08 07:09:26'),
+(10, 13, 1, '', 0, 2, '2018-09-08 07:09:28'),
+(11, 13, 1, '', 0, 2, '2018-09-08 07:09:25'),
+(12, 12, 1, '', 1, 2, '2018-09-08 07:09:34'),
+(13, 1, 1, '', 0, 2, '2018-09-08 07:09:45');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `socio`
+-- Struttura della tabella `socio`
 --
 
-CREATE TABLE IF NOT EXISTS `socio` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `socio` (
+  `id` int(11) NOT NULL,
   `numero_tessera` int(11) DEFAULT NULL,
   `nome` varchar(150) DEFAULT NULL,
   `cognome` varchar(150) DEFAULT NULL,
@@ -140,12 +188,11 @@ CREATE TABLE IF NOT EXISTS `socio` (
   `email` varchar(255) DEFAULT NULL,
   `tel` varchar(100) DEFAULT NULL,
   `data_nascita` date DEFAULT NULL,
-  `note` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
+  `note` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `socio`
+-- Dump dei dati per la tabella `socio`
 --
 
 INSERT INTO `socio` (`id`, `numero_tessera`, `nome`, `cognome`, `codice_fiscale`, `email`, `tel`, `data_nascita`, `note`) VALUES
@@ -162,19 +209,18 @@ INSERT INTO `socio` (`id`, `numero_tessera`, `nome`, `cognome`, `codice_fiscale`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `socio_parentela`
+-- Struttura della tabella `socio_parentela`
 --
 
-CREATE TABLE IF NOT EXISTS `socio_parentela` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `socio_parentela` (
+  `id` int(11) NOT NULL,
   `socio_id` int(11) DEFAULT NULL,
   `parente_id` int(11) DEFAULT NULL,
-  `parentela` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+  `parentela` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `socio_parentela`
+-- Dump dei dati per la tabella `socio_parentela`
 --
 
 INSERT INTO `socio_parentela` (`id`, `socio_id`, `parente_id`, `parentela`) VALUES
@@ -190,14 +236,126 @@ INSERT INTO `socio_parentela` (`id`, `socio_id`, `parente_id`, `parentela`) VALU
 (10, 12, 11, 'PADRE');
 
 --
--- Constraints for dumped tables
+-- Indici per le tabelle scaricate
 --
 
 --
--- Constraints for table `corso_elemento`
+-- Indici per le tabelle `account`
+--
+ALTER TABLE `account`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indici per le tabelle `classe`
+--
+ALTER TABLE `classe`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indici per le tabelle `corso`
+--
+ALTER TABLE `corso`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indici per le tabelle `corso_elemento`
 --
 ALTER TABLE `corso_elemento`
-  ADD CONSTRAINT `fk_corso` FOREIGN KEY (`corso_id`) REFERENCES `corso` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_corso_idx` (`corso_id`);
+
+--
+-- Indici per le tabelle `corso_iscrizione`
+--
+ALTER TABLE `corso_iscrizione`
+  ADD PRIMARY KEY (`id`,`pagato`),
+  ADD KEY `fk_socio_iscri_idx` (`socio_id`),
+  ADD KEY `fk_classe_iscr_idx` (`classe_id`),
+  ADD KEY `fk_corso_elem_iscr_idx` (`corso_id`);
+
+--
+-- Indici per le tabelle `socio`
+--
+ALTER TABLE `socio`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indici per le tabelle `socio_parentela`
+--
+ALTER TABLE `socio_parentela`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_socio_parent_idx` (`socio_id`);
+
+--
+-- AUTO_INCREMENT per le tabelle scaricate
+--
+
+--
+-- AUTO_INCREMENT per la tabella `account`
+--
+ALTER TABLE `account`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT per la tabella `classe`
+--
+ALTER TABLE `classe`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT per la tabella `corso`
+--
+ALTER TABLE `corso`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT per la tabella `corso_elemento`
+--
+ALTER TABLE `corso_elemento`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT per la tabella `corso_iscrizione`
+--
+ALTER TABLE `corso_iscrizione`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT per la tabella `socio`
+--
+ALTER TABLE `socio`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT per la tabella `socio_parentela`
+--
+ALTER TABLE `socio_parentela`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- Limiti per le tabelle scaricate
+--
+
+--
+-- Limiti per la tabella `corso_elemento`
+--
+ALTER TABLE `corso_elemento`
+  ADD CONSTRAINT `fk_corso` FOREIGN KEY (`corso_id`) REFERENCES `corso` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Limiti per la tabella `corso_iscrizione`
+--
+ALTER TABLE `corso_iscrizione`
+  ADD CONSTRAINT `fk_socio_iscri` FOREIGN KEY (`socio_id`) REFERENCES `socio` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_classe_iscr` FOREIGN KEY (`classe_id`) REFERENCES `classe` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_corso_elem_iscr` FOREIGN KEY (`corso_id`) REFERENCES `corso_elemento` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limiti per la tabella `socio_parentela`
+--
+ALTER TABLE `socio_parentela`
+  ADD CONSTRAINT `fk_socio_parent` FOREIGN KEY (`socio_id`) REFERENCES `socio` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

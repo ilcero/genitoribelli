@@ -89,6 +89,15 @@ html{
     margin-bottom: 8px;
     padding: 5px;
 }
+#container_iscritti{
+    font-family: Arial;
+    padding: 8px;
+}
+#aggiunta_iscritto{
+    font-family: Arial;
+    padding: 8px;
+    border: 1px solid #0096eb;
+}
 .button_aggiungi{
     color: white;
     padding: 3px;

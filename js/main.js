@@ -310,10 +310,65 @@ function del_corso_elemento(id, corso_id)
 function dettagli_corso_elemento(corso_elemento_id)
 {
     var dhxWins = new dhtmlXWindows();
-    var dettagli_corso_elemento_win = dhxWins.createWindow("cew", 20, 30, 800, 600);
+    var dettagli_corso_elemento_win = dhxWins.createWindow("cew", 20, 30, 900, 600);
     dettagli_corso_elemento_win.setText("Dettagli");
     dettagli_corso_elemento_win.setModal(true);
     dhxWins.window("cew").centerOnScreen();
     
     dettagli_corso_elemento_win.attachURL("dettagli_corso_elemento.php", true, {corso_elemento_id:corso_elemento_id});
+}
+
+function iscrivi_socio(corso_elemento_id)
+{
+    var socio_id =  $('socio_id').value;
+    var classe_id = $('classe_id').value;
+    var pagato = 0;
+    var note = "";
+    
+    if($('pagato').checked)
+    {
+        pagato = 1;
+    }
+    
+    if(socio_id == "" || socio_id == "undefined")
+    {
+        alert("ATTENZIONE: scegliere il tesserato");
+        return false;
+    }
+    else if(classe_id == "" || classe_id == "undefined")
+    {
+        alert("ATTENZIONE: scegliere la classe");
+        return false;
+    }
+    else
+    {
+        var iscrivi_socio = new Request.HTML({
+            url: 'sql/iscrivi_socio_action.php',
+                onSuccess: function(tree, elements, html, js) {
+                    iscrittiGrid.clearAll()
+                    iscrittiGrid.load("json_data/iscritti_corso_elemento.php?corso_elemento_id="+corso_elemento_id,"json");
+            }
+        });
+        iscrivi_socio.post({
+                'corso_elemento_id': corso_elemento_id, 
+                'socio_id' : socio_id, 
+                'pagato' : pagato, 
+                'note' : note, 
+                'classe_id' : classe_id
+            });
+    }
+}
+
+function change_pagato(rId, corso_elemento_id)
+{
+    var change_pagato = new Request.HTML({
+        url: 'sql/change_pagato.php',
+            onSuccess: function(tree, elements, html, js) {
+                    iscrittiGrid.clearAll()
+                    iscrittiGrid.load("json_data/iscritti_corso_elemento.php?corso_elemento_id="+corso_elemento_id,"json");
+        }
+    });
+    change_pagato.post({
+            'id': rId
+        });
 }
