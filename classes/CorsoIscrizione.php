@@ -206,4 +206,28 @@ class CorsoIscrizione {
         $conn->close();
         return $corso_iscrizione;
     }
+    
+    static function get_by_socio_id_active($socio_id)
+    {
+        $corso_iscrizione = null;
+        $db = new Db();
+        $conn = $db->connect();
+        
+        $sql = "SELECT ci.* FROM corso_iscrizione AS ci "
+                . " INNER JOIN corso_elemento as ce ON ce.id = ci.corso_id "
+                . " INNER JOIN corso AS c ON c.id = ce.corso_id  "
+                . " WHERE "
+                . " ce.data_fine >= now() "
+                . " AND ci.socio_id =".$socio_id;
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                $corso_iscrizione[$row["id"]] = CorsoIscrizione::get_object_from_db($row);
+            }
+        } 
+        $conn->close();
+        return $corso_iscrizione;
+    }
 }

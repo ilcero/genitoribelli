@@ -40,7 +40,7 @@ require_once './classes/CorsoElemento.php';
                 echo'</div>';
                 
                 echo'</div>';
-                echo'<div class="action"><input type="button" class="button_aggiungi" value="elimina" onclick="del_corso_elemento('.$id.','.$_POST["corso_id"].')"/></div>';
+                echo'<div class="action"><input type="button" class="button_aggiungi" value="elimina" onclick="del_corso_elemento('.$id.','.$_POST["corso_id"].')"/></div><br/>';
             }
         }
     ?>

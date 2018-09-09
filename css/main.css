@@ -98,6 +98,27 @@ html{
     padding: 8px;
     border: 1px solid #0096eb;
 }
+#dettaglioSocio{
+    font-family: Arial;
+    padding: 8px;
+    font-size: 13px;
+    overflow: auto;
+    height: 100%;
+}
+#dettaglioSocio div{
+    border: 1px solid #0096eb;
+}
+#dettaglioSocio p.title{
+    font-weight: bold;
+    font-size: 14px;
+    background-color: #0096eb;
+    color: white;
+    padding: 4px;
+    margin: 0px;
+}
+#dettaglioSocio p.line{
+    padding: 4px;
+}
 .button_aggiungi{
     color: white;
     padding: 3px;

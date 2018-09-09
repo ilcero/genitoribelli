@@ -4,6 +4,7 @@
 ?>
 
 <div id="my_tabbar" style="width:100%; height:600px;"></div>
+<div id="dettaglioSocio"></div>
 <div id="modSocioForm"></div>
 <div id="modSocioParentela">
     
@@ -14,19 +15,25 @@
     
     myTabbar = new dhtmlXTabBar("my_tabbar");
 			
-    myTabbar.addTab("a1", "Modifica socio", null, null, true);
-    myTabbar.addTab("a2", "Parentela");
+    myTabbar.addTab("a1", "Dettagli", null, null, true);
+    myTabbar.addTab("a2", "Modifica socio");
+    myTabbar.addTab("a3", "Parentela");
 
-    myTabbar.tabs("a1").attachObject("modSocioForm");
-    myTabbar.tabs("a2").attachObject("modSocioParentela");
+    myTabbar.tabs("a1").attachObject("dettaglioSocio");
+    myTabbar.tabs("a2").attachObject("modSocioForm");
+    myTabbar.tabs("a3").attachObject("modSocioParentela");
     
     myTabbar.attachEvent("onTabClick", function(idClicked, idSelected){
-        if(idClicked == "a2")
+        if(idClicked == "a1")
+        {
+            load_dettagli_socio(<?php echo $_POST["id"] ?>);
+        }
+        if(idClicked == "a3")
         {
             load_parentela(<?php echo $_POST["id"] ?>);
         }
     });
-
+    
     var modSocioForm = new dhtmlXForm("modSocioForm");
     
     modSocioForm.loadStruct("json_data/mod_socio.php?id="+<?php echo $_POST["id"] ?>, function(){});
@@ -93,4 +100,5 @@
             }
         }
     })
+    load_dettagli_socio(<?php echo $_POST["id"] ?>);
 </script>

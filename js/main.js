@@ -45,7 +45,6 @@ function menu_go_to(id)
 
 function load_parentela(socio_id)
 {
-//    alert('load_parentela')
     var load_parentela = new Request.HTML({
         url: 'parentela.php',
         update: $('modSocioParentela'),
@@ -54,6 +53,18 @@ function load_parentela(socio_id)
         }
     });
     load_parentela.post({'socio_id': socio_id});
+}
+
+function load_dettagli_socio(socio_id)
+{
+    var load_dettagli_socio = new Request.HTML({
+        url: 'dettagli_socio.php',
+        update: $('dettaglioSocio'),
+            onSuccess: function(tree, elements, html, js) {
+//                alert('success');
+        }
+    });
+    load_dettagli_socio.post({'socio_id': socio_id});
 }
 
 function aggiugni_parente(socio_id)

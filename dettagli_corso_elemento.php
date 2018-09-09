@@ -9,7 +9,6 @@ require_once './classes/Classe.php';
     };
     
     iscrittiGridMenu = new dhtmlXMenuObject();
-//    iscrittiGridMenu.setIconsPath("../common/images/");
     iscrittiGridMenu.renderAsContextMenu();
     iscrittiGridMenu.attachEvent("onClick",onButtonClick);
     iscrittiGridMenu.loadStruct("./json_data/gridiscritticontextmenu.json");
