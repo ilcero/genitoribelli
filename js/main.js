@@ -318,15 +318,19 @@ function del_corso_elemento(id, corso_id)
     }
 }
 
-function dettagli_corso_elemento(corso_elemento_id)
+function dettagli_corso_elemento(corso_elemento_id, corso_id)
 {
     var dhxWins = new dhtmlXWindows();
-    var dettagli_corso_elemento_win = dhxWins.createWindow("cew", 20, 30, 900, 600);
+    var dettagli_corso_elemento_win = dhxWins.createWindow("dcew", 20, 30, 900, 650);
     dettagli_corso_elemento_win.setText("Dettagli");
     dettagli_corso_elemento_win.setModal(true);
-    dhxWins.window("cew").centerOnScreen();
+    dhxWins.window("dcew").centerOnScreen();
     
     dettagli_corso_elemento_win.attachURL("dettagli_corso_elemento.php", true, {corso_elemento_id:corso_elemento_id});
+    dettagli_corso_elemento_win.attachEvent("onClose", function(win){
+        load_elenco_elementi(corso_id);
+        return true;
+    });
 }
 
 function iscrivi_socio(corso_elemento_id)

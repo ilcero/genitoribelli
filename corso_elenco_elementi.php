@@ -1,5 +1,6 @@
 <?php
 require_once './classes/CorsoElemento.php';
+require_once './classes/CorsoIscrizione.php';
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -24,7 +25,7 @@ require_once './classes/CorsoElemento.php';
         {
             foreach ($corso_elementi as $id => $obj)
             {
-                echo'<div class="line" onclick="dettagli_corso_elemento('.$id.')"><p><b>'.$obj->getNome().'</b> <em>('.$obj->getData_inizio_display().' - '.$obj->getData_fine_display().')</em></p>';
+                echo'<div class="line" onclick="dettagli_corso_elemento('.$id.','.$_POST["corso_id"].')"><p><b>'.$obj->getNome().'</b> <em>('.$obj->getData_inizio_display().' - '.$obj->getData_fine_display().')</em></p>';
                 $gg_sett = "";
                 $num = 0;
                 echo'<div class="orari">';
@@ -38,7 +39,37 @@ require_once './classes/CorsoElemento.php';
                 echo'<br/>';
                 echo $obj->getOra_inizio_display().' - '.$obj->getOra_fine_display();
                 echo'</div>';
-                
+                $corso_iscrizioni = CorsoIscrizione::get_by_corso_elemento_id($id);
+                $iscritti = 0;
+                $pagati = 0;
+                $non_pagati = 0;
+                if($corso_iscrizioni != NULL)
+                {
+                    foreach ($corso_iscrizioni as $id_ci => $obj_ci)
+                    {
+                        $iscritti++;
+                        if($obj_ci->getPagato())
+                        {
+                            $pagati++;
+                        }
+                        else
+                        {
+                            $non_pagati++;
+                        }
+                    }
+                }
+                echo'<div>';
+                echo'<p class="stat">ISCRITTI: '.$iscritti.'</p>';
+                echo'<p class="stat">PAGANTI: '.$pagati.'</p>';
+                if($non_pagati >0)
+                {
+                    echo'<p class="stat_err">NON PAGANTI: '.$non_pagati.'</p>';
+                }
+                else
+                {
+                    echo'<p class="stat">NON PAGANTI: '.$non_pagati.'</p>';
+                }
+                echo'</div>';
                 echo'</div>';
                 echo'<div class="action"><input type="button" class="button_aggiungi" value="elimina" onclick="del_corso_elemento('.$id.','.$_POST["corso_id"].')"/></div><br/>';
             }

@@ -45,7 +45,7 @@ include 'inc/header.php';
                 sociGrid.setColSorting("int,str,str,str,str,str,date");
                 sociGrid.attachEvent("onRowSelect",open_socio_details);
                 sociGrid.enableColumnAutoSize(true);
-                sociGrid.enableAutoHeight(true);
+                sociGrid.enableAutoHeight(true, 800, false);
                 sociGrid.setCustomSorting(str_custom,1);
                 sociGrid.setCustomSorting(str_custom,2);
                 sociGrid.init();
