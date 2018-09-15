@@ -10,5 +10,8 @@
 		{id: "file_sep_2", type: "separator"},
 		{id: "elenco_corsi", text: "Elenco", img: "open.gif", imgdis: "open_dis.gif"}
 	]},
-	
+        {id: "sep_top_2", type: "separator"},
+	{id:"report", text:"Report", items:[
+		{id: "partecipanti_classe", text: "Partecipanti per classe", img: "paste.gif", imgdis: "paste_dis.gif"},
+	]}
 ]

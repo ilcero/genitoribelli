@@ -41,6 +41,10 @@ function menu_go_to(id)
     {
         window.location.href = "nuovo_corso.php";
     }
+    else if(id == "partecipanti_classe")
+    {
+        window.location.href = "report_partecipanti.php";
+    }
 }
 
 function load_parentela(socio_id)
@@ -386,4 +390,11 @@ function change_pagato(rId, corso_elemento_id)
     change_pagato.post({
             'id': rId
         });
+}
+
+function do_report_partecipanti_classe()
+{
+    var classe_id = $('classe_id').value;
+    var period = $('period').value;
+    window.location.href = "report/report_partecipanti_classe.php?classe_id="+classe_id+"&period="+period;
 }

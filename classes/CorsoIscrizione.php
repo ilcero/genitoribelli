@@ -230,4 +230,34 @@ class CorsoIscrizione {
         $conn->close();
         return $corso_iscrizione;
     }
+    
+    static function get_by_classe_period($classe_id, $period)
+    {
+        $corso_iscrizione = null;
+        $db = new Db();
+        $conn = $db->connect();
+        
+        $sql = "select ci.* from corso_iscrizione as ci 
+                inner join classe as c on c.id = ci.classe_id 
+                inner join corso_elemento as ce on ce.id = ci.corso_id 
+                inner join corso as co on co.id = ce.corso_id 
+                inner join socio as s on s.id = ci.socio_id 
+                where 
+                c.id = ".$classe_id." 
+                and '".$period."' between ce.data_inizio and ce.data_fine";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                $corso_iscrizione[$row["id"]] = CorsoIscrizione::get_object_from_db($row);
+            }
+        } 
+        $conn->close();
+        return $corso_iscrizione;
+    }
+    
+    
+    
+    
 }
