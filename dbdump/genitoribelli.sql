@@ -30,7 +30,7 @@ CREATE DEFINER=`root`@`localhost` FUNCTION `getNuovoNumeroTessera` () RETURNS IN
   
   DECLARE num INT(11);
  
-  SELECT MAX(numero_tessera)+1 INTO num FROM socio;
+  SELECT COALESCE(MAX(numero_tessera)+1,1) INTO num FROM socio;
 
   
   
