@@ -391,6 +391,19 @@ function change_pagato(rId, corso_elemento_id)
             'id': rId
         });
 }
+function delete_iscrizione(rId, corso_elemento_id)
+{
+    var delete_iscrizione = new Request.HTML({
+        url: 'sql/delete_iscrizione.php',
+            onSuccess: function(tree, elements, html, js) {
+                    iscrittiGrid.clearAll()
+                    iscrittiGrid.load("json_data/iscritti_corso_elemento.php?corso_elemento_id="+corso_elemento_id,"json");
+        }
+    });
+    delete_iscrizione.post({
+            'id': rId
+        });
+}
 
 function do_report_partecipanti_classe()
 {

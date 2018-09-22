@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'classes/account.php';
+include 'classes/Account.php';
 
 $user = $_POST["user"];
 $passwd = $_POST["passwd"];

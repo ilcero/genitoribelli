@@ -1,5 +1,5 @@
 <?php
-include '../classes/socio.php';
+include '../classes/Socio.php';
 //echo $_GET["id"];
 
 $socio = Socio::get_by_id($_GET["id"]);

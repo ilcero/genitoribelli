@@ -1,5 +1,5 @@
 <?php
-include '../classes/socio.php';
+include '../classes/Socio.php';
 
 //$rows["rows"] = "";
 

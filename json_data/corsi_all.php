@@ -1,5 +1,5 @@
 <?php
-require_once '../classes/socio.php';
+require_once '../classes/Socio.php';
 require_once '../classes/Corso.php';
 
 //$rows["rows"] = "";

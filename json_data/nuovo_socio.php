@@ -1,5 +1,5 @@
 <?php
-include '../classes/socio.php';
+include '../classes/Socio.php';
 
 
 $formData[0]["type"] = "settings";
@@ -49,7 +49,7 @@ $list[5]["enableTime"] = "false";
 $list[5]["name"] = "data_nascita";
 $list[5]["label"] = "Data di nascita";
 $list[5]["value"] = "";
-$list[5]["required"] = true;
+//$list[5]["required"] = true;
 
 $list[6]["type"] = "editor";
 $list[6]["name"] = "note";

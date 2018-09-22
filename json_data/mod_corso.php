@@ -1,6 +1,6 @@
 <?php
 include '../classes/Corso.php';
-include '../classes/socio.php';
+include '../classes/Socio.php';
 //echo $_GET["id"];
 
 $corso = Corso::get_by_id($_GET["id"]);

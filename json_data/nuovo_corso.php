@@ -1,5 +1,5 @@
 <?php
-require_once '../classes/socio.php';
+require_once '../classes/Socio.php';
 
 
 $formData[0]["type"] = "settings";

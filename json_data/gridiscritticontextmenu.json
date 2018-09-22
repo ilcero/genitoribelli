@@ -1,4 +1,6 @@
 [
-	{id:"pagato", text:"Pagato / Non pagato", items:[]}
+	{id:"pagato", text:"Pagato / Non pagato",img:"./imgs/collega.png",imgdis:"./imgs/collega.png", items:[]},
+        {id:   "s_id", type: "separator"},
+	{id:"elimina", text:"Elimina",img:"./imgs/delete.png",imgdis:"./imgs/delete.png",items:[]}
 	
 ]

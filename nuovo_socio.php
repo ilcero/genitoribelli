@@ -53,11 +53,6 @@ include 'inc/header.php';
                         alert('ATTENZIONE: inserire il cognome');
                         return false;
                     }
-                    else if(data_nascita == "" || data_nascita == "undefined")
-                    {
-                        alert('ATTENZIONE: inserire la data di nascita');
-                        return false;
-                    }
                     else
                     {
                         var update_socio = new Request.HTML({

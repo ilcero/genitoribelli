@@ -1,9 +1,9 @@
 <?php
-require_once '../classes/socio.php';
+require_once '../classes/Socio.php';
 require_once '../classes/Classe.php';
 require_once '../classes/CorsoIscrizione.php';
 
-//$rows["rows"] = "";
+$rows["rows"] = Array();
 
 $socio = Socio::get_all_socio();
 $classe = Classe::get_all();

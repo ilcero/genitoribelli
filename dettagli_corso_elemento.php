@@ -21,6 +21,9 @@ require_once './classes/Classe.php';
                     case "pagato":
                         change_pagato(rId,<?Php echo $_POST["corso_elemento_id"]; ?>);
                             break;
+                    case "elimina":
+                        delete_iscrizione(rId,<?Php echo $_POST["corso_elemento_id"]; ?>);
+                            break;
             }
     }
     
