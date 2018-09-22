@@ -25,7 +25,7 @@ class Socio {
     }
 
     function getNumero_tessera() {
-        return $this->numero_tessera;
+        return 'CG19'.str_pad($this->numero_tessera,3,'0', STR_PAD_LEFT);
     }
 
     function getNome() {

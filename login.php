@@ -18,8 +18,8 @@
                 formData = [
                     {type: "settings", position: "label-left", labelWidth: 130, inputWidth: 120},
                     {type: "fieldset", label: "Autenticazione", inputWidth: 340, list:[
-                        {type: "input", name: "user", label: "Username", value: "root"},
-                        {type: "password", name: "passwd", label: "Password", value: "root"},
+                        {type: "input", name: "user", label: "Username", value: ""},
+                        {type: "password", name: "passwd", label: "Password", value: ""},
                         {type: "button", value: "ACCEDI"}
                     ]}
                 ];
