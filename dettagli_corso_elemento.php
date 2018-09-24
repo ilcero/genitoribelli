@@ -62,6 +62,7 @@ require_once './classes/Classe.php';
         ?>
         &nbsp;<input type="checkbox" id="pagato"/> Pagato
         &nbsp;<input type="button" class="button_aggiungi" value="ISCRIVI" onclick="iscrivi_socio(<?Php echo $_POST["corso_elemento_id"]; ?>)"/>
+        &nbsp;<input type="button" class="button_aggiungi" value="REPORT" onclick="do_report_iscritti(<?Php echo $_POST["corso_elemento_id"]; ?>)"/>
     </div><br/><br/>
     <div id="elenco_iscritti"></div>
 </div>

@@ -411,3 +411,7 @@ function do_report_partecipanti_classe()
     var period = $('period').value;
     window.location.href = "report/report_partecipanti_classe.php?classe_id="+classe_id+"&period="+period;
 }
+function do_report_iscritti(id_corso_elemento)
+{
+    window.location.href = "report/report_iscritti.php?id_corso_elemento="+id_corso_elemento;
+}
