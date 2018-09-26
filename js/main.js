@@ -33,6 +33,10 @@ function menu_go_to(id)
     {
         window.location.href = "nuovo_socio.php";
     }
+    else if(id == "report_soci")
+    {
+        window.location.href = "./report/report_elenco_soci.php";
+    }
     else if(id == "elenco_corsi")
     {
         window.location.href = "elenco_corsi.php";

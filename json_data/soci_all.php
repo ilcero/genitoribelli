@@ -15,7 +15,7 @@ if($socio != NULL)
         $va[3] = $obj->getCodice_fiscale();
         $va[4] = $obj->getEmail();
         $va[5] = $obj->getTel();
-        $va[6] = $obj->getData_nascita();
+        $va[6] = $obj->getData_nascita_ita();
         
         $s["id"]=$id;
         $s["data"]=$va;

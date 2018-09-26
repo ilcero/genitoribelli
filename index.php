@@ -1,5 +1,6 @@
 <?php
 include 'inc/header.php';
+require_once './classes/Socio.php';
 ?>
 
 <!DOCTYPE html>
@@ -38,14 +39,15 @@ include 'inc/header.php';
                 sociGrid = new dhtmlXGridObject('socigridbox');
                 sociGrid.setImagePath("dhtmlx/skins/skyblue/imgs/");
                 sociGrid.setHeader("Tessera, Nome, Cognome, Codice Fiscale, email, tel, Data nascita");
-                sociGrid.attachHeader("#numeric_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,&nbsp;");
+                sociGrid.attachHeader("#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,&nbsp;");
                 sociGrid.setInitWidths("70,*,*,*,*,*,*");
                 sociGrid.setColAlign("center,left,left,left,left,left,left");
                 sociGrid.setColTypes("ro,ro,ro,ro,ro,ro,ro");
-                sociGrid.setColSorting("int,str,str,str,str,str,date");
+                sociGrid.setColSorting("int,str,str,str,str,str");
                 sociGrid.attachEvent("onRowSelect",open_socio_details);
                 sociGrid.enableColumnAutoSize(true);
                 sociGrid.enableAutoHeight(true, 800, false);
+                sociGrid.setCustomSorting(str_custom,0);
                 sociGrid.setCustomSorting(str_custom,1);
                 sociGrid.setCustomSorting(str_custom,2);
                 sociGrid.init();
@@ -58,6 +60,9 @@ include 'inc/header.php';
             <?php include 'inc/loggeduser.php';?>
             <br/>
             <div id="gbMenu"></div><br/>
+            <div id="soci_stats">
+                Numero iscritti: <b><?Php echo Socio::get_num_soci();?></b> - Ultima tessera emessa: <b><?Php echo Socio::get_last_tesserato();?></b>
+            </div><br/>
             <div id="container">
                 <div id="socigridbox"></div>
                 <div id="socigriddetails"></div>

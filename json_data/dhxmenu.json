@@ -2,7 +2,8 @@
 	{id:"soci", text:"Soci", items:[
 		{id: "nuovo_socio", text: "Nuovo socio", img: "new.gif", imgdis: "new_dis.gif"},
 		{id: "file_sep_1", type: "separator"},
-		{id: "elenco_soci", text: "Elenco", img: "open.gif", imgdis: "open_dis.gif"}
+		{id: "elenco_soci", text: "Elenco", img: "open.gif", imgdis: "open_dis.gif"},
+		{id: "report_soci", text: "Report", img: "./../../../imgs/export_excel.png", imgdis: "./../../../imgs/export_excel.png"}
 	]},
 	{id: "sep_top_1", type: "separator"},
         {id:"corsi", text:"Corsi", items:[

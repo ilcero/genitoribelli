@@ -19,6 +19,12 @@ html{
     margin: 0px auto;
     height: 100%;
 }
+#soci_stats{
+    font-family: Arial;
+    font-size: 14px;
+    color:#0096eb;
+    letter-spacing: 1px;
+}
 #socigridbox{
     width: 60%;
     float: left;

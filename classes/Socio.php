@@ -203,4 +203,42 @@ class Socio {
         $conn->close();
         return $socio;
     }
+    
+    static function get_num_soci()
+    {
+        $num = 0;
+        $db = new Db();
+        $conn = $db->connect();
+        
+        $sql = "SELECT COUNT(*) AS num FROM socio";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                $num = $row["num"];
+            }
+        } 
+        $conn->close();
+        return $num;
+    }
+    
+    static function get_last_tesserato()
+    {
+        $last_tessera = 0;
+        $db = new Db();
+        $conn = $db->connect();
+        
+        $sql = "SELECT MAX(numero_tessera) AS last_tessera FROM socio";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                $last_tessera = 'CG19'.str_pad($row["last_tessera"],3,'0', STR_PAD_LEFT);
+            }
+        } 
+        $conn->close();
+        return $last_tessera;
+    }
 }

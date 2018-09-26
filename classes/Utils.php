@@ -16,7 +16,7 @@ class Utils {
     static function reverse_date($mod)
     {
         if($mod == 0 || $mod == null || $mod == ""){
-            return ("0000-00-00");
+            return ("");
         }else{
             $date1 = NULL;
             if($mod != null AND $mod != "" AND $mod != "0000-00-00"){
