@@ -20,6 +20,8 @@ class Socio {
     var $data_nascita;
     var $note;
     
+    var $data_inizio_tess_incorso;
+    
     function getId() {
         return $this->id;
     }
@@ -102,6 +104,20 @@ class Socio {
         return $this->cognome." ".$this->nome;
     }
     
+    function getData_inizio_tess_incorso() {
+        return $this->data_inizio_tess_incorso;
+    }
+    
+    function getData_inizio_tess_incorso_ita()
+    {
+        return Utils::reverse_date( $this->data_inizio_tess_incorso);
+    }
+    
+    function setData_inizio_tess_incorso($data_inizio_tess_incorso) {
+        $this->data_inizio_tess_incorso = $data_inizio_tess_incorso;
+    }
+
+        
     public function insert()
     {
         $db = new Db();
@@ -162,7 +178,14 @@ class Socio {
         $socio->setTel($row["tel"]);
         $socio->setData_nascita($row["data_nascita"]);
         $socio->setNote($row["note"]);
-        
+        if(array_key_exists("data_inizio",$row))
+        {
+            $socio->setData_inizio_tess_incorso($row["data_inizio"]);
+        }
+        else
+        {
+            $socio->setData_inizio_tess_incorso("eeee");
+        }
         return $socio;
     }
     
@@ -182,6 +205,26 @@ class Socio {
             }
         } 
         $conn->close();
+        return $socio;
+    }
+    
+    static function get_all_socio_attivo()
+    {
+        $socio = null;
+        $db = new Db();
+        $conn = $db->connect();
+        
+        $sql = "SELECT * FROM genitoribelli.socio as s LEFT JOIN (select id as id_tess, data_inizio, data_fine, socio_id from socio_tesseramento WHERE now() between data_inizio AND data_fine) as tess on tess.socio_id = s.id ORDER BY cognome, nome";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                $socio[$row["id"]] = Socio::get_object_from_db($row);
+            }
+        } 
+        $conn->close();
+//        print_r($socio);
         return $socio;
     }
     

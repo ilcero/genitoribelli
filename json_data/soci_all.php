@@ -3,7 +3,7 @@ include '../classes/Socio.php';
 
 //$rows["rows"] = "";
 
-$socio = Socio::get_all_socio();
+$socio = Socio::get_all_socio_attivo();
 if($socio != NULL)
 {
     $num = 0;
@@ -16,6 +16,14 @@ if($socio != NULL)
         $va[4] = $obj->getEmail();
         $va[5] = $obj->getTel();
         $va[6] = $obj->getData_nascita_ita();
+        if($obj->getData_inizio_tess_incorso() != null)
+        {
+            $va[7] = $obj->getData_inizio_tess_incorso_ita();
+        }
+        else
+        {
+            $va[7] = "";
+        }
         
         $s["id"]=$id;
         $s["data"]=$va;

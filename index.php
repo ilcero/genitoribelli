@@ -37,13 +37,13 @@ require_once './classes/Socio.php';
                 };
                 
                 sociGrid = new dhtmlXGridObject('socigridbox');
-                sociGrid.setImagePath("dhtmlx/skins/skyblue/imgs/");
-                sociGrid.setHeader("Tessera, Nome, Cognome, Codice Fiscale, email, tel, Data nascita");
-                sociGrid.attachHeader("#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,&nbsp;");
-                sociGrid.setInitWidths("70,*,*,*,*,*,*");
-                sociGrid.setColAlign("center,left,left,left,left,left,left");
-                sociGrid.setColTypes("ro,ro,ro,ro,ro,ro,ro");
-                sociGrid.setColSorting("int,str,str,str,str,str");
+                sociGrid.setImagePath("dhtmlx/codebase/imgs/");
+                sociGrid.setHeader("Tessera, Nome, Cognome, Codice Fiscale, email, tel, Data nascita, Tessera valida");
+                sociGrid.attachHeader("#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,&nbsp;,&nbsp;");
+                sociGrid.setInitWidths("70,*,*,*,*,*,*,*");
+                sociGrid.setColAlign("center,left,left,left,left,left,left,left");
+                sociGrid.setColTypes("ro,ro,ro,ro,ro,ro,ro,ch");
+                sociGrid.setColSorting("int,str,str,str,str,str,str");
                 sociGrid.attachEvent("onRowSelect",open_socio_details);
                 sociGrid.enableColumnAutoSize(true);
                 sociGrid.enableAutoHeight(true, 800, false);
@@ -52,6 +52,10 @@ require_once './classes/Socio.php';
                 sociGrid.setCustomSorting(str_custom,2);
                 sociGrid.init();
                 sociGrid.load("json_data/soci_all.php","json");
+                sociGrid.setEditable(false);
+//                sociGrid.attachEvent("onRowCreated", function(rId,rObj,rXml){
+//                    sociGrid.cells(rId,7).setDisabled(true); 
+//                });
             }
     </script>
 </head>

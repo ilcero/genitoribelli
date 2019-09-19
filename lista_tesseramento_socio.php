@@ -17,6 +17,7 @@
             {
                 echo '<tr>';
                 echo '<td>Dal <b>'.Utils::reverse_date($obj->getData_inizio()).'</b> al <b>'.Utils::reverse_date($obj->getData_fine()).'</b> (Note: '.$obj->getNote().')</td>';
+                echo"<td><input class=\"button_aggiungi\" type=\"button\" onclick=\"elimina_parente_action(".$obj->getId().",".$_POST["socio_id"].")\" value=\"elimina\"/></td>";
                 echo '</tr>';
             }
             echo '</table>';
