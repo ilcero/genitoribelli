@@ -214,7 +214,7 @@ class Socio {
         $db = new Db();
         $conn = $db->connect();
         
-        $sql = "SELECT * FROM genitoribelli.socio as s LEFT JOIN (select id as id_tess, data_inizio, data_fine, socio_id from socio_tesseramento WHERE now() between data_inizio AND data_fine) as tess on tess.socio_id = s.id ORDER BY cognome, nome";
+        $sql = "SELECT * FROM socio as s LEFT JOIN (select id as id_tess, data_inizio, data_fine, socio_id from socio_tesseramento WHERE now() between data_inizio AND data_fine) as tess on tess.socio_id = s.id ORDER BY cognome, nome";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
