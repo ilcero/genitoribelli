@@ -75,6 +75,18 @@ function load_dettagli_socio(socio_id)
     load_dettagli_socio.post({'socio_id': socio_id});
 }
 
+function load_tesseramento_socio(socio_id)
+{
+    var load_tesseramento_socio = new Request.HTML({
+        url: 'lista_tesseramento_socio.php',
+        update: $('dettaglioSocio'),
+            onSuccess: function(tree, elements, html, js) {
+//                alert('success');
+        }
+    });
+    load_tesseramento_socio.post({'socio_id': socio_id});
+}
+
 function aggiugni_parente(socio_id)
 {
     var load_parentela = new Request.HTML({

@@ -7,6 +7,7 @@
 <div id="dettaglioSocio"></div>
 <div id="modSocioForm"></div>
 <div id="modSocioParentela">
+<div id="modSocioTesseramento">
     
 </div>
 
@@ -18,10 +19,12 @@
     myTabbar.addTab("a1", "Dettagli", null, null, true);
     myTabbar.addTab("a2", "Modifica socio");
     myTabbar.addTab("a3", "Parentela");
+    myTabbar.addTab("a4", "Tesseramento");
 
     myTabbar.tabs("a1").attachObject("dettaglioSocio");
     myTabbar.tabs("a2").attachObject("modSocioForm");
     myTabbar.tabs("a3").attachObject("modSocioParentela");
+    myTabbar.tabs("a4").attachObject("modSocioTesseramento");
     
     myTabbar.attachEvent("onTabClick", function(idClicked, idSelected){
         if(idClicked == "a1")
@@ -31,6 +34,10 @@
         if(idClicked == "a3")
         {
             load_parentela(<?php echo $_POST["id"] ?>);
+        }
+        if(idClicked == "a3")
+        {
+            load_tesseramento_socio(<?php echo $_POST["id"] ?>);
         }
     });
     
