@@ -1,46 +1,28 @@
 <?php
     require_once './classes/SocioTesseramento.php';
+?>
+<br/>
+<input type="button" value="AGGIUNGI TESSERAMENTO" class="button_aggiungi_fullsize" onclick="aggiugni_tesseramento(<?Php echo $_POST["socio_id"]; ?>)"/>
+<br/>
+<br/>
+<div id="form_aggiunta_tesseramento"></div>
+<?Php
     
-    $tesseramenti = SocioTesseramento::get_by_socio_id($_POST["socio_id"]);
-    echo'qui';
-    if($tesseramenti != NULL)
-    {
+        $tesseramenti = SocioTesseramento::get_by_socio_id($_POST["socio_id"]);
         
-    }
-    else
-    {
-        echo'NESSUNA ISCRIZIONE ATTIVA';
-    }
-    
-//    $corsi = Corso::get_all_corso();
-//    $corsi_elementi = CorsoElemento::get_all_corso_elemento();
-//    
-//    $corso_iscrizione = CorsoIscrizione::get_by_socio_id_active($_POST["socio_id"]);
-//    if($corso_iscrizione != NULL)
-//    {
-//        echo'<fieldset><legend>ISCRIZIONE AI CORSI:</legend>';
-//        foreach ($corso_iscrizione as $key => $obj)
-//        {
-//            $corso_elm = $corsi_elementi[$obj->getCorso_id()];
-//            $corso = $corsi[$corso_elm->getCorso_id()];
-//            
-//            echo '<div><p class="title">'.$corso->getNome().'</p>';
-//            echo '<p class="line">Dal '.$corso_elm->getData_inizio_display().' al '.$corso_elm->getData_fine_display().'</p>';
-//            if($obj->getPagato() == 1)
-//            {
-//                echo '<p class="line">Pagato: <img src="imgs/pagato.png"/></p>';
-//            }
-//            else
-//            {
-//                echo '<p class="line">Pagato: <img src="imgs/no_pagato.png"/></p>';
-//            }
-//            echo'</div><br/>';
-//        }
-//        echo' </fieldset>';
-//    }
-//    else
-//    {
-//        echo'NESSUNA ISCRIZIONE ATTIVA';
-//    }
+        echo '<table class="table_parentela" cellspacing="0" cellpadding="10">';
+        if($tesseramenti != null && $tesseramenti != "")
+        {
+            foreach($tesseramenti as $id => $obj)
+            {
+                echo '<tr>';
+                echo '<td>Dal <b>'.Utils::reverse_date($obj->getData_inizio()).'</b> al <b>'.Utils::reverse_date($obj->getData_fine()).'</b> (Note: '.$obj->getNote().')</td>';
+                echo '</tr>';
+            }
+            echo '</table>';
+        }
+        
+        echo '</table>';
+        
 ?>
 

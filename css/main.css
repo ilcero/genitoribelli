@@ -42,6 +42,11 @@ html{
     font-size: 14px;
     color: #333;
 }
+#modSocioTesseramento{
+    padding: 5px;
+    font-size: 14px;
+    color: #333;
+}
 .form_aggiunta_parente{
     border: 1px dotted #666;
     width: 100%;

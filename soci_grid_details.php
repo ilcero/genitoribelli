@@ -6,11 +6,8 @@
 <div id="my_tabbar" style="width:100%; height:600px;"></div>
 <div id="dettaglioSocio"></div>
 <div id="modSocioForm"></div>
-<div id="modSocioParentela">
-<div id="modSocioTesseramento">
-    
-</div>
-
+<div id="modSocioParentela"></div>
+<div id="modSocioTesseramento">ddddd</div>
 
 <script>
     
@@ -35,7 +32,7 @@
         {
             load_parentela(<?php echo $_POST["id"] ?>);
         }
-        if(idClicked == "a3")
+        if(idClicked == "a4")
         {
             load_tesseramento_socio(<?php echo $_POST["id"] ?>);
         }

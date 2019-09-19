@@ -79,7 +79,7 @@ function load_tesseramento_socio(socio_id)
 {
     var load_tesseramento_socio = new Request.HTML({
         url: 'lista_tesseramento_socio.php',
-        update: $('dettaglioSocio'),
+        update: $('modSocioTesseramento'),
             onSuccess: function(tree, elements, html, js) {
 //                alert('success');
         }
@@ -97,6 +97,17 @@ function aggiugni_parente(socio_id)
         }
     });
     load_parentela.post({'socio_id': socio_id});
+}
+function aggiugni_tesseramento(socio_id)
+{
+    var aggiugni_tesseramento = new Request.HTML({
+        url: 'form_aggiunta_tesseramento.php',
+        update: $('form_aggiunta_tesseramento'),
+            onSuccess: function(tree, elements, html, js) {
+//                alert('success');
+        }
+    });
+    aggiugni_tesseramento.post({'socio_id': socio_id});
 }
 function aggiugni_parente_action(socio_id)
 {
@@ -123,6 +134,35 @@ function aggiugni_parente_action(socio_id)
             }
         });
         aggiugni_parente_action.post({'socio_id': socio_id, 'parente_id' : parente_id, 'grado_parentela' : grado_parentela});
+    }
+}
+function aggiugni_tessaramento_action(socio_id)
+{
+    var data_inizio =  $('data_inizio').value;
+    var data_fine =  $('data_fine').value;
+    var note =  $('note').value;
+    
+//    alert(data_inizio+" "+data_fine+" "+note)
+    
+    if(data_inizio == "" || data_inizio == "undefined")
+    {
+        alert("ATTENZIONE: scegliere la data di inizio");
+        return false;
+    }
+    else if(data_fine == "" || data_fine == "undefined")
+    {
+        alert("ATTENZIONE: scegliere la data di fine");
+        return false;
+    }
+    else
+    {
+        var aggiugni_tessaramento_action = new Request.HTML({
+            url: 'aggiugni_tessaramento_action.php',
+                onSuccess: function(tree, elements, html, js) {
+                    load_tesseramento_socio(socio_id);
+            }
+        });
+        aggiugni_tessaramento_action.post({'socio_id': socio_id, 'data_inizio': data_inizio, 'data_fine' : data_fine, 'note' : note});
     }
 }
 

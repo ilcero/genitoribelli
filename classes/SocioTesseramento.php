@@ -39,13 +39,23 @@ class SocioTesseramento {
     function setData_fine($data_fine) {
         $this->data_fine = $data_fine;
     }
+    function getNote() {
+        return $this->note;
+    }
 
-        
+    function setNote($note) {
+        $this->note = $note;
+    }
+
+            
     function getId() {
         return $this->id;
     }
+    function setId($id) {
+        $this->id = $id;
+    }
 
-    
+        
     public function insert()
     {
         $db = new Db();
@@ -53,9 +63,9 @@ class SocioTesseramento {
         $res = $conn->query("INSERT INTO socio_tesseramento (socio_id, data_inizio, data_fine, note) "
                 . " VALUES "
                 . "("
-                    . "'".$this->socio_id()."', "
-                    . "'".$this->data_inizio()."', "
-                    . "'".$this->data_fine()."', "
+                    . "'".$this->getSocio_id()."', "
+                    . "'".$this->getData_inizio()."', "
+                    . "'".$this->getData_fine()."', "
                     . "'".$conn->real_escape_string($this->getNote())."'"
                 . ")");
         $conn->close();
@@ -89,11 +99,11 @@ class SocioTesseramento {
     
     static function get_object_from_db($row)
     {
-        $socio = new Socio();
+        $socio = new SocioTesseramento();
         $socio->setId($row["id"]);
-        $socio->socio_id($row["socio_id"]);
-        $socio->data_inizio($row["data_inizio"]);
-        $socio->data_fine($row["data_fine"]);
+        $socio->setSocio_id($row["socio_id"]);
+        $socio->setData_inizio($row["data_inizio"]);
+        $socio->setData_fine($row["data_fine"]);
         $socio->setNote($row["note"]);
         
         return $socio;
@@ -101,7 +111,7 @@ class SocioTesseramento {
     
     static function get_by_socio_id($socio_id)
     {
-        $socio = null;
+        $tess = null;
         $db = new Db();
         $conn = $db->connect();
         
@@ -111,10 +121,10 @@ class SocioTesseramento {
         if ($result->num_rows > 0) {
             // output data of each row
             while($row = $result->fetch_assoc()) {
-                $socio = Socio::get_object_from_db($row);
+                $tess[$row["id"]] = SocioTesseramento::get_object_from_db($row);
             }
         } 
         $conn->close();
-        return $socio;
+        return $tess;
     }
 }
