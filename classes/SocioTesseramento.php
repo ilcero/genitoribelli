@@ -115,7 +115,7 @@ class SocioTesseramento {
         $db = new Db();
         $conn = $db->connect();
         
-        $sql = "SELECT * FROM socio_tesseramento WHERE socio_id =".$socio_id;
+        $sql = "SELECT * FROM socio_tesseramento WHERE socio_id =".$socio_id." ORDER BY data_inizio DESC";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
