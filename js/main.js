@@ -160,6 +160,7 @@ function aggiugni_tessaramento_action(socio_id)
             url: 'aggiugni_tessaramento_action.php',
                 onSuccess: function(tree, elements, html, js) {
                     load_tesseramento_socio(socio_id);
+                    refreshSociGrid();
             }
         });
         aggiugni_tessaramento_action.post({'socio_id': socio_id, 'data_inizio': data_inizio, 'data_fine' : data_fine, 'note' : note});
@@ -178,6 +179,22 @@ function elimina_parente_action(id, socio_id)
             }
         });
         elimina_parente_action.post({'id': id});
+    }
+}
+
+function elimina_tesseramento_action(id, socio_id)
+{
+//    alert(id)
+    if(confirm("ATTENZIONE: sicuro di voler procedere con l'eliminazione?"))
+    {
+        var elimina_tesseramento_action = new Request.HTML({
+            url: 'sql/elimina_tesseramento.php',
+                onSuccess: function(tree, elements, html, js) {
+                    load_tesseramento_socio(socio_id);
+                    refreshSociGrid();
+            }
+        });
+        elimina_tesseramento_action.post({'id': id});
     }
 }
 
