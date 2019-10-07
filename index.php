@@ -46,7 +46,7 @@ require_once './classes/Socio.php';
                 sociGrid.setColSorting("int,str,str,str,str,str,str");
                 sociGrid.attachEvent("onRowSelect",open_socio_details);
                 sociGrid.enableColumnAutoSize(true);
-                sociGrid.enableAutoHeight(true, 800, false);
+//                sociGrid.enableAutoHeight(true, 800, false);
                 sociGrid.setCustomSorting(str_custom,0);
                 sociGrid.setCustomSorting(str_custom,1);
                 sociGrid.setCustomSorting(str_custom,2);
@@ -68,7 +68,7 @@ require_once './classes/Socio.php';
                 Numero iscritti: <b><?Php echo Socio::get_num_soci();?></b> - Ultima tessera emessa: <b><?Php echo Socio::get_last_tesserato();?></b>
             </div><br/>
             <div id="container">
-                <div id="socigridbox"></div>
+                <div id="socigridbox" style="height: 600px;"></div>
                 <div id="socigriddetails"></div>
                 <div style="clear:both;"></div>
             </div>

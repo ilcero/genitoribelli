@@ -5,7 +5,8 @@
 		{id: "elenco_soci", text: "Elenco attivi", img: "icon_grid.gif", imgdis: "icon_grid.gif"},
                 {id: "elenco_soci_completo", text: "Elenco completo", img: "folderClosed.gif", imgdis: "folderClosed.gif"},
                 {id: "file_sep_3", type: "separator"},
-		{id: "report_soci", text: "Report", img: "./../../../imgs/export_excel.png", imgdis: "./../../../imgs/export_excel.png"}
+		{id: "report_soci_attivi", text: "Report attivi", img: "./../../../imgs/export_excel.png", imgdis: "./../../../imgs/export_excel.png"},
+                {id: "report_soci", text: "Report globale", img: "./../../../imgs/export_excel.png", imgdis: "./../../../imgs/export_excel.png"}
 	]},
 	{id: "sep_top_1", type: "separator"},
         {id:"corsi", text:"Corsi", items:[

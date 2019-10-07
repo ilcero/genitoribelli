@@ -43,6 +43,10 @@ function menu_go_to(id)
     {
         window.location.href = "nuovo_socio.php";
     }
+    else if(id == "report_soci_attivi")
+    {
+        window.location.href = "./report/report_elenco_soci_attivi.php";
+    }
     else if(id == "report_soci")
     {
         window.location.href = "./report/report_elenco_soci.php";
