@@ -5,7 +5,7 @@ require_once '../classes/Corso.php';
 //$rows["rows"] = "";
 
 $socio = Socio::get_all_socio();
-$corso = Corso::get_all_corso_current();
+$corso = Corso::get_all_corso();
 
 if($corso != NULL)
 {

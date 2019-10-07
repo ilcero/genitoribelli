@@ -51,7 +51,7 @@ require_once './classes/Socio.php';
                 sociGrid.setCustomSorting(str_custom,1);
                 sociGrid.setCustomSorting(str_custom,2);
                 sociGrid.init();
-                sociGrid.load("json_data/soci_all_attivi.php","json");
+                sociGrid.load("json_data/soci_all.php","json");
                 sociGrid.setEditable(false);
 //                sociGrid.attachEvent("onRowCreated", function(rId,rObj,rXml){
 //                    sociGrid.cells(rId,7).setDisabled(true); 

@@ -1,5 +1,6 @@
 <?php
 require_once './classes/Socio.php';
+require_once './classes/CorsoElemento.php';
 require_once './classes/Classe.php';
 ?>
 <script>
@@ -47,8 +48,9 @@ require_once './classes/Classe.php';
 <div id="container_iscritti">
     <div id="aggiunta_iscritto">
         <?Php
+            $corso = CorsoElemento::get_by_id($_POST["corso_elemento_id"]);
             echo'<select id="socio_id">';
-            $soci = Socio::get_all_socio();
+            $soci = Socio::get_solo_attivo($corso->data_inizio);
             foreach ($soci as $key => $value) {
                 echo'<option value="'.$value->getId().'">'.$value->getCognomeNome().'</option>';
             }

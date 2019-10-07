@@ -2,14 +2,17 @@
 	{id:"soci", text:"Soci", items:[
 		{id: "nuovo_socio", text: "Nuovo socio", img: "new.gif", imgdis: "new_dis.gif"},
 		{id: "file_sep_1", type: "separator"},
-		{id: "elenco_soci", text: "Elenco", img: "open.gif", imgdis: "open_dis.gif"},
+		{id: "elenco_soci", text: "Elenco attivi", img: "icon_grid.gif", imgdis: "icon_grid.gif"},
+                {id: "elenco_soci_completo", text: "Elenco completo", img: "folderClosed.gif", imgdis: "folderClosed.gif"},
+                {id: "file_sep_3", type: "separator"},
 		{id: "report_soci", text: "Report", img: "./../../../imgs/export_excel.png", imgdis: "./../../../imgs/export_excel.png"}
 	]},
 	{id: "sep_top_1", type: "separator"},
         {id:"corsi", text:"Corsi", items:[
 		{id: "nuovo_corso", text: "Nuovo corso", img: "new.gif", imgdis: "new_dis.gif"},
 		{id: "file_sep_2", type: "separator"},
-		{id: "elenco_corsi", text: "Elenco", img: "open.gif", imgdis: "open_dis.gif"}
+		{id: "elenco_corsi_attivi", text: "Elenco Attivi", img: "icon_grid.gif", imgdis: "icon_grid.gif"},
+                {id: "elenco_corsi", text: "Elenco completo", img: "folderClosed.gif", imgdis: "folderClosed.gif"}
 	]},
         {id: "sep_top_2", type: "separator"},
 	{id:"report", text:"Report", items:[

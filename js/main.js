@@ -14,6 +14,12 @@ function refreshSociGrid()
 {
 //    alert(sociGrid);
     sociGrid.clearAll()
+    sociGrid.load("json_data/soci_all_attivi.php","json");
+}
+function refreshSociGridCompleto()
+{
+//    alert(sociGrid);
+    sociGrid.clearAll()
     sociGrid.load("json_data/soci_all.php","json");
 }
 function refreshCorsiGrid()
@@ -29,6 +35,10 @@ function menu_go_to(id)
     {
         window.location.href = "index.php";
     }
+    if(id == "elenco_soci_completo")
+    {
+        window.location.href = "elenco_soci_completo.php";
+    }
     else if(id == "nuovo_socio")
     {
         window.location.href = "nuovo_socio.php";
@@ -37,9 +47,13 @@ function menu_go_to(id)
     {
         window.location.href = "./report/report_elenco_soci.php";
     }
-    else if(id == "elenco_corsi")
+    else if(id == "elenco_corsi_attivi")
     {
         window.location.href = "elenco_corsi.php";
+    }
+    else if(id == "elenco_corsi")
+    {
+        window.location.href = "elenco_corsi_storico.php";
     }
     else if(id == "nuovo_corso")
     {

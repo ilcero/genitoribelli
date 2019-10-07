@@ -152,6 +152,25 @@ class Corso {
         return $corso;
     }
     
+    static function get_all_corso_current()
+    {
+        $corso = null;
+        $db = new Db();
+        $conn = $db->connect();
+        
+        $sql = "SELECT * FROM corso WHERE data_fine >= now() ORDER BY nome, data_inizio";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                $corso[$row["id"]] = Corso::get_object_from_db($row);
+            }
+        } 
+        $conn->close();
+        return $corso;
+    }
+    
     static function get_by_id($id)
     {
         $corso = null;
