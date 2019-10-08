@@ -1,5 +1,6 @@
 <?php
 include '../classes/Socio.php';
+include '../classes/SocioTesseramento.php';
 require_once '../classes/Utils.php';
 
 //print_r($_POST);
@@ -16,7 +17,18 @@ $socio->setData_nascita(Utils::reverse_date($_POST["data_nascita"]));
 
 if($socio->insert())
 {
-    echo'inserimento effettuato';
+    $tess = new SocioTesseramento();
+    $tess->setSocio_id($socio->getId());
+    $tess->setData_inizio(Utils::reverse_date($_POST["inizio_tessera"]));
+    $tess->setData_fine(Utils::reverse_date($_POST["fine_tessera"]));
+    if($tess->insert())
+    {
+        echo'inserimento effettuato';
+    }
+    else 
+    {
+         echo'errore inserimento tesseramento';
+    }
 }
 else 
 {

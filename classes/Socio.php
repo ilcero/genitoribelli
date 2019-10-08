@@ -134,6 +134,7 @@ class Socio {
                     . "'".$this->getData_nascita()."', "
                     . "'".$conn->real_escape_string($this->getNote())."'"
                 . ")");
+        $this->setId($conn->insert_id);
         $conn->close();
         return $res;
     }

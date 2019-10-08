@@ -41,6 +41,8 @@ include 'inc/header.php';
                     var email = nuovoSocioForm.getItemValue("email");
                     var tel = nuovoSocioForm.getItemValue("tel");
                     var data_nascita = nuovoSocioForm.getItemValue("data_nascita", true);
+                    var inizio_tessera = nuovoSocioForm.getItemValue("inizio_tessera", true);
+                    var fine_tessera = nuovoSocioForm.getItemValue("fine_tessera", true);
                     var note = nuovoSocioForm.getItemValue("note");
 
                     if(nome == "" || nome == "undefined")
@@ -58,6 +60,16 @@ include 'inc/header.php';
                         alert('ATTENZIONE: inserire la data di nascita');
                         return false;
                     }
+                    else if(inizio_tessera == "" || inizio_tessera == "undefined")
+                    {
+                        alert('ATTENZIONE: inserire la data di inizio tessera');
+                        return false;
+                    }
+                    else if(fine_tessera == "" || fine_tessera == "undefined")
+                    {
+                        alert('ATTENZIONE: inserire la data di fine tessera');
+                        return false;
+                    }
                     else
                     {
                         var update_socio = new Request.HTML({
@@ -73,6 +85,8 @@ include 'inc/header.php';
                             'email': email,
                             'tel': tel,
                             'data_nascita': data_nascita,
+                            'inizio_tessera': inizio_tessera,
+                            'fine_tessera': fine_tessera,
                             'note': note
 
                         });
