@@ -287,6 +287,25 @@ class Socio {
         return $num;
     }
     
+    static function get_num_soci_attivi($data)
+    {
+        $num = 0;
+        $db = new Db();
+        $conn = $db->connect();
+        
+        $sql = "SELECT COUNT(*) AS num FROM socio as s INNER JOIN (select id as id_tess, data_inizio, data_fine, socio_id from socio_tesseramento WHERE '".$data."' between data_inizio AND data_fine) as tess on tess.socio_id = s.id ORDER BY cognome, nome";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                $num = $row["num"];
+            }
+        } 
+        $conn->close();
+        return $num;
+    }
+    
     static function get_last_tesserato()
     {
         $last_tessera = 0;

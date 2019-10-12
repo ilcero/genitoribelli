@@ -14,7 +14,7 @@ require_once './classes/Socio.php';
 	<link rel="stylesheet" type="text/css" href="css/main.css"/>
 	<link rel="stylesheet" type="text/css" href="dhtmlx/codebase/fonts/font_roboto/roboto.css"/>
 	<!--<link rel="stylesheet" type="text/css" href="dhtmlx/codebase/dhtmlx.css"/>-->
-	<link rel="stylesheet" type="text/css" href="dhtmlx/skins/material/dhtmlx.css"/>
+        <link rel="stylesheet" type="text/css" href="dhtmlx/skins/web/dhtmlx.css"/>
 	<script src="dhtmlx/codebase/dhtmlx.js"></script>
         <script>
             var gbMenu, sociGrid;
@@ -37,7 +37,7 @@ require_once './classes/Socio.php';
                 };
                 
                 sociGrid = new dhtmlXGridObject('socigridbox');
-                sociGrid.setImagePath("dhtmlx/codebase/imgs/");
+                sociGrid.setImagePath("dhtmlx/skins/web/imgs/");
                 sociGrid.setHeader("Tessera, Nome, Cognome, Codice Fiscale, email, tel, Data nascita, Tessera valida");
                 sociGrid.attachHeader("#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,&nbsp;,&nbsp;");
                 sociGrid.setInitWidths("70,*,*,*,*,*,*,*");
@@ -65,7 +65,7 @@ require_once './classes/Socio.php';
             <br/>
             <div id="gbMenu"></div><br/>
             <div id="soci_stats">
-                Numero iscritti: <b><?Php echo Socio::get_num_soci();?></b> - Ultima tessera emessa: <b><?Php echo Socio::get_last_tesserato();?></b>
+                Numero iscritti attivi al <?Php echo date("d-m-Y");?>: <b><?Php echo Socio::get_num_soci_attivi(date("Y-m-d"));?></b> - Ultima tessera emessa: <b><?Php echo Socio::get_last_tesserato();?></b>
             </div><br/>
             <div id="container">
                 <div id="socigridbox" style="height: 600px;"></div>
